@@ -1,0 +1,2332 @@
+<?xml version="1.0" encoding="UTF-8"?><TestSessionContainer xmlns="http://www.codecover.org/xml/testsession-container" Date="1380147244186" TestSessionContainerId="18183e78-b999-4372-9ed2-e64fe741f415" version="1.0">
+<SrcFileList>
+<SrcFile Content="package amu.model;&#10;&#10;import java.io.Serializable;&#10;&#10;public class Title implements Serializable {&#10;&#10;    private int id;&#10;    private String name;&#10;&#10;    public Title() {&#10;        // Default constructor does nothing&#10;    }&#10;    &#10;    public Title(int id, String name) {&#10;        this.id = id;&#10;        this.name = name;&#10;    }&#10;&#10;    public int getId() {&#10;        return id;&#10;    }&#10;&#10;    public void setId(int id) {&#10;        this.id = id;&#10;    }&#10;&#10;    public String getName() {&#10;        return name;&#10;    }&#10;&#10;    public void setName(String name) {&#10;        this.name = name;&#10;    }&#10;}&#10;" Filename="Title.java" Intrnl_Id="1"/>
+<SrcFile Content="package amu.model;&#10;&#10;import java.io.Serializable;&#10;&#10;public class Publisher implements Serializable {&#10;&#10;    private int id;&#10;    private String name;&#10;&#10;    public Publisher() {&#10;        // Default constructor does nothing&#10;    }&#10;    &#10;    public Publisher(int id, String name) {&#10;        this.id = id;&#10;        this.name = name;&#10;    }&#10;&#10;    public int getId() {&#10;        return id;&#10;    }&#10;&#10;    public void setId(int id) {&#10;        this.id = id;&#10;    }&#10;&#10;    public String getName() {&#10;        return name;&#10;    }&#10;&#10;    public void setName(String name) {&#10;        this.name = name;&#10;    }&#10;}&#10;" Filename="Publisher.java" Intrnl_Id="2"/>
+<SrcFile Content="package amu.model;&#10;&#10;import java.util.Calendar;&#10;&#10;public class Order {&#10;    &#10;    private Integer id;&#10;    private Customer customer;&#10;    private Address address;&#10;    private Calendar createdDate;&#10;    private String value;&#10;    private int status;&#10;    &#10;    // TODO: Add OrderItems&#10;&#10;    public Order(int id, Customer customer, Address address, Calendar createdDate, String value, int status) {&#10;        this.id = id;&#10;        this.customer = customer;&#10;        this.address = address;&#10;        this.createdDate = createdDate;&#10;        this.value = value;&#10;        this.status = status;&#10;    }&#10;&#10;    public Order(Customer customer, Address address, String subtotal) {&#10;        this.id = null;&#10;        this.customer = customer;&#10;        this.address = address;&#10;        this.createdDate = null;&#10;        this.value = subtotal;&#10;        this.status = 0;&#10;    }&#10;&#10;    public Integer getId() {&#10;        return id;&#10;    }&#10;&#10;    public Customer getCustomer() {&#10;        return customer;&#10;    }&#10;&#10;    public Address getAddress() {&#10;        return address;&#10;    }&#10;&#10;    public Calendar getCreatedDate() {&#10;        return createdDate;&#10;    }&#10;&#10;    public String getValue() {&#10;        return value;&#10;    }&#10;&#10;    public int getStatus() {&#10;        return status;&#10;    }&#10;    &#10;    public String getStatusText() {&#10;        switch (status)&#10;        {&#10;            case 2: &#10;                return &quot;Delivered&quot;;&#10;            case 1:&#10;                return &quot;Shipped&quot;;&#10;            case 0:&#10;            default:&#10;                return &quot;Pending&quot;;&#10;            case -1:&#10;                return &quot;Canceled&quot;;&#10;        }&#10;    }&#10;}&#10;" Filename="Order.java" Intrnl_Id="3"/>
+<SrcFile Content="package amu.model;&#10;&#10;import java.io.Serializable;&#10;&#10;// TODO: Refactor... Add validation, make a real Model class not just POD&#10;public class Customer implements Serializable {&#10;    private int id;&#10;    private String email;&#10;    private String password;&#10;    private String name;&#10;    private String activationToken = null;&#10;&#10;    public int getId() {&#10;        return id;&#10;    }&#10;&#10;    public void setId(int id) {&#10;        this.id = id;&#10;    }&#10;&#10;    public String getEmail() {&#10;        return email;&#10;    }&#10;&#10;    public void setEmail(String email) {&#10;        this.email = email;&#10;    }&#10;&#10;    public String getPassword() {&#10;        return password;&#10;    }&#10;&#10;    public void setPassword(String password) {&#10;        this.password = password;&#10;    }&#10;&#10;    public String getName() {&#10;        return name;&#10;    }&#10;&#10;    public void setName(String name) {&#10;        this.name = name;&#10;    }&#10;&#10;    public String getActivationToken() {&#10;        return activationToken;&#10;    }&#10;&#10;    public void setActivationToken(String activationToken) {&#10;        this.activationToken = activationToken;&#10;    }&#10;}&#10;" Filename="Customer.java" Intrnl_Id="4"/>
+<SrcFile Content="package amu.model;&#10;&#10;import java.util.Calendar;&#10;&#10;public class CreditCard {&#10;&#10;    private Integer id;&#10;    private Customer customer;&#10;    private String creditCardNumber;&#10;    private Calendar expiryDate;&#10;    private String cardholderName;&#10;&#10;    public CreditCard(Integer id, Customer customer, String creditCardNumber, Calendar expiryDate, String cardholderName) {&#10;        this.id = id;&#10;        this.customer = customer;&#10;        this.creditCardNumber = creditCardNumber;&#10;        this.expiryDate = expiryDate;&#10;        this.cardholderName = cardholderName;&#10;    }&#10;&#10;    public CreditCard(Customer customer, String creditCardNumber, Calendar expiryDate, String cardholderName) {&#10;        this.id = null;&#10;        this.customer = customer;&#10;        this.creditCardNumber = creditCardNumber;&#10;        this.expiryDate = expiryDate;&#10;        this.cardholderName = cardholderName;&#10;    }&#10;&#10;    public Integer getId() {&#10;        return id;&#10;    }&#10;&#10;    public Customer getCustomer() {&#10;        return customer;&#10;    }&#10;&#10;    public String getCreditCardNumber() {&#10;        return creditCardNumber;&#10;    }&#10;&#10;    public String getMaskedCreditCardNumber() {&#10;        StringBuilder maskedCreditCardNumber = new StringBuilder(creditCardNumber.length());&#10;        for (int i = 0; i &lt; creditCardNumber.length(); i++)&#10;        {&#10;            if (i &gt;= creditCardNumber.length() - 4) {&#10;                maskedCreditCardNumber.append(creditCardNumber.charAt(i));&#10;            } else {&#10;                maskedCreditCardNumber.append('*');&#10;            }&#10;        }&#10;        return maskedCreditCardNumber.toString();&#10;    }&#10;&#10;    public Calendar getExpiryDate() {&#10;        return expiryDate;&#10;    }&#10;&#10;    public String getCardholderName() {&#10;        return cardholderName;&#10;    }&#10;}&#10;" Filename="CreditCard.java" Intrnl_Id="5"/>
+<SrcFile Content="package amu.model;&#10;&#10;import java.util.List;&#10;&#10;public class Category {&#10;    &#10;    private Integer id;&#10;    private String name;&#10;    private List&lt;Category&gt; subcategories;&#10;    &#10;    // TODO: Stub&#10;}&#10;" Filename="Category.java" Intrnl_Id="6"/>
+<SrcFile Content="package amu.model;&#10;&#10;import java.io.Serializable;&#10;&#10;public class CartItem implements Serializable {&#10;    private Book book;&#10;    private int quantity;&#10;&#10;    public CartItem(Book book, int quantity)&#10;    {&#10;        this.book = book;&#10;        this.quantity = quantity;&#10;    }&#10;    &#10;    public Book getBook() {&#10;        return book;&#10;    }&#10;&#10;    public void setBook(Book book) {&#10;        this.book = book;&#10;    }&#10;&#10;    public int getQuantity() {&#10;        return quantity;&#10;    }&#10;&#10;    public void setQuantity(int quantity) {&#10;        this.quantity = quantity;&#10;    }&#10;&#10;    void addQuantity(int quantity) {&#10;       this.quantity += quantity;&#10;    }&#10;}&#10;" Filename="CartItem.java" Intrnl_Id="7"/>
+<SrcFile Content="package amu.model;&#10;&#10;import java.io.Serializable;&#10;import java.util.HashMap;&#10;import java.util.Map;&#10;&#10;public class Cart implements Serializable {&#10;&#10;    private Map&lt;String, CartItem&gt; items = new HashMap&lt;String, CartItem&gt;();&#10;    private Address shippingAddress = null;&#10;    private CreditCard creditCard = null;&#10;&#10;    public Map&lt;String, CartItem&gt; getItems() {&#10;        return items;&#10;    }&#10;    &#10;    public boolean hasItemByISBN(String isbn) {&#10;        if (items.get(isbn) == null) {&#10;            return false;&#10;        } else {&#10;            return true;&#10;        }&#10;    }&#10;&#10;    public CartItem getItemByISBN(String isbn) {&#10;        return items.get(isbn);&#10;    }&#10;    &#10;    public void updateItem(CartItem item) {&#10;        String isbn = item.getBook().getIsbn13();&#10;        if (hasItemByISBN(isbn)) {&#10;            if (item.getQuantity() &gt; 0) {&#10;                items.put(isbn, item);&#10;            } else {&#10;                items.remove(isbn);&#10;            }&#10;        } else {&#10;            items.put(isbn, item);&#10;        }&#10;    }&#10;&#10;    public void addItem(CartItem item) {&#10;        String isbn = item.getBook().getIsbn13();&#10;        if (hasItemByISBN(isbn)) {&#10;            if (items.get(isbn).getQuantity() + item.getQuantity() &gt; 0) {&#10;                items.get(isbn).addQuantity(item.getQuantity());&#10;            } else {&#10;                items.remove(isbn);&#10;            }&#10;        } else {&#10;            items.put(isbn, item);&#10;        }&#10;    }&#10;&#10;    public int getNumberOfItems() {&#10;        int numberOfItems = 0;&#10;        for (CartItem item : items.values()) {&#10;            numberOfItems += item.getQuantity();&#10;        }&#10;        return numberOfItems;&#10;    }&#10;&#10;    public Float getSubtotal() {&#10;        Float subtotal = new Float(0);&#10;        for (CartItem item : items.values()) {&#10;            subtotal += item.getQuantity() * item.getBook().getPrice();&#10;        }&#10;        return subtotal;&#10;    }&#10;&#10;    public Address getShippingAddress() {&#10;        return shippingAddress;&#10;    }&#10;&#10;    public void setShippingAddress(Address shippingAddress) {&#10;        this.shippingAddress = shippingAddress;&#10;    }&#10;&#10;    public CreditCard getCreditCard() {&#10;        return creditCard;&#10;    }&#10;&#10;    public void setCreditCard(CreditCard creditCard) {&#10;        this.creditCard = creditCard;&#10;    }&#10;}&#10;" Filename="Cart.java" Intrnl_Id="8"/>
+<SrcFile Content="package amu.model;&#10;&#10;import java.io.Serializable;&#10;import java.util.List;&#10;&#10;public class Book implements Serializable {&#10;    private int id;&#10;    private Title title;&#10;    private Publisher publisher;&#10;    private List&lt;Author&gt; author;&#10;    private String published; &#10;    private int edition;&#10;    private String binding; &#10;    private String isbn10;&#10;    private String isbn13;&#10;    private String description;&#10;    private float price; &#10;&#10;    public int getId() {&#10;        return id;&#10;    }&#10;&#10;    public void setId(int id) {&#10;        this.id = id;&#10;    }&#10;&#10;    public Title getTitle() {&#10;        return title;&#10;    }&#10;&#10;    public void setTitle(Title title) {&#10;        this.title = title;&#10;    }&#10;&#10;    public Publisher getPublisher() {&#10;        return publisher;&#10;    }&#10;&#10;    public void setPublisher(Publisher publisher) {&#10;        this.publisher = publisher;&#10;    }&#10;&#10;    public String getPublished() {&#10;        return published;&#10;    }&#10;&#10;    public void setPublished(String published) {&#10;        this.published = published;&#10;    }&#10;&#10;    public String getBinding() {&#10;        return binding;&#10;    }&#10;&#10;    public void setBinding(String binding) {&#10;        this.binding = binding;&#10;    }&#10;&#10;    public String getIsbn10() {&#10;        return isbn10;&#10;    }&#10;&#10;    public void setIsbn10(String isbn10) {&#10;        this.isbn10 = isbn10;&#10;    }&#10;&#10;    public String getIsbn13() {&#10;        return isbn13;&#10;    }&#10;&#10;    public void setIsbn13(String isbn13) {&#10;        this.isbn13 = isbn13;&#10;    }&#10;&#10;    public String getDescription() {&#10;        return description;&#10;    }&#10;&#10;    public void setDescription(String description) {&#10;        this.description = description;&#10;    }&#10;&#10;    public float getPrice() {&#10;        return price;&#10;    }&#10;&#10;    public void setPrice(float price) {&#10;        this.price = price;&#10;    }&#10;&#10;    public List&lt;Author&gt; getAuthor() {&#10;        return author;&#10;    }&#10;&#10;    public void setAuthor(List&lt;Author&gt; author) {&#10;        this.author = author;&#10;    }&#10;&#10;    public int getEdition() {&#10;        return edition;&#10;    }&#10;&#10;    public void setEdition(int edition) {&#10;        this.edition = edition;&#10;    }&#10;}" Filename="Book.java" Intrnl_Id="9"/>
+<SrcFile Content="package amu.model;&#10;&#10;import java.io.Serializable;&#10;&#10;public class Author implements Serializable {&#10;&#10;    private int id;&#10;    private String name;&#10;&#10;    public Author() {&#10;        // Default constructor does nothing&#10;    }&#10;    &#10;    public Author(int id, String name) {&#10;        this.id = id;&#10;        this.name = name;&#10;    }&#10;&#10;    public int getId() {&#10;        return id;&#10;    }&#10;&#10;    public void setId(int id) {&#10;        this.id = id;&#10;    }&#10;&#10;    public String getName() {&#10;        return name;&#10;    }&#10;&#10;    public void setName(String name) {&#10;        this.name = name;&#10;    }&#10;}&#10;" Filename="Author.java" Intrnl_Id="10"/>
+<SrcFile Content="package amu.model;&#10;&#10;public class Address {&#10;    &#10;    private Integer id;&#10;    private Customer customer;&#10;    private String address;&#10;    &#10;    public Address(int id, Customer customer, String address) {&#10;        this.id = id;&#10;        this.customer = customer;&#10;        this.address = address;&#10;    }&#10;&#10;    public Address(Customer customer, String address) {&#10;        this.id = null;&#10;        this.customer = customer;&#10;        this.address = address;&#10;    }&#10;&#10;    public int getId() {&#10;        return id;&#10;    }&#10;&#10;    public Customer getCustomer() {&#10;        return customer;&#10;    }&#10;&#10;    public String getAddress() {&#10;        return address;&#10;    }&#10;&#10;    public void setAddress(String address) {&#10;        this.address = address;&#10;    }&#10;}&#10;" Filename="Address.java" Intrnl_Id="11"/>
+</SrcFileList>
+<CritList>
+<CritListEntry Name="org.codecover.model.utils.criteria.LoopCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.BranchCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.ConditionCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.SynchronizedStatementCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.QMOCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.StatementCoverage" PluginName="org.codecover"/>
+</CritList>
+<BoolOpList/>
+<HierarchyLvlTypeList>
+<HierarchyLvlType EnglishName="package" IntrnlName="package" Intrnl_Id="12"/>
+<HierarchyLvlType EnglishName="class" IntrnlName="class" Intrnl_Id="13"/>
+<HierarchyLvlType EnglishName="method" IntrnlName="method" Intrnl_Id="14"/>
+<HierarchyLvlType EnglishName="default package" IntrnlName="default package" Intrnl_Id="15"/>
+</HierarchyLvlTypeList>
+<MASTRoot>
+<HierarchyLvl HierarchyLvlId="116" HierarchyLvlTypeId="15" Intrnl_Id="16" Name="default package">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="115" HierarchyLvlTypeId="12" Intrnl_Id="17" Name="amu">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="114" HierarchyLvlTypeId="12" Intrnl_Id="18" Name="model">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="19" HierarchyLvlTypeId="13" Intrnl_Id="19" Name="Title">
+<Header>
+<Loc EndOffset="92" SrcFileId="1" StartOffset="50"/>
+</Header>
+<LocList>
+<Loc EndOffset="555" SrcFileId="1" StartOffset="50"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="13" HierarchyLvlTypeId="14" Intrnl_Id="20" Name="Title">
+<Header>
+<Loc EndOffset="160" SrcFileId="1" StartOffset="146"/>
+</Header>
+<LocList>
+<Loc EndOffset="212" SrcFileId="1" StartOffset="146"/>
+</LocList>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="14" HierarchyLvlTypeId="14" Intrnl_Id="21" Name="Title">
+<Header>
+<Loc EndOffset="255" SrcFileId="1" StartOffset="222"/>
+</Header>
+<LocList>
+<Loc EndOffset="311" SrcFileId="1" StartOffset="222"/>
+</LocList>
+<StmntSeq Intrnl_Id="22">
+<LocList>
+<Loc EndOffset="279" SrcFileId="1" StartOffset="266"/>
+<Loc EndOffset="305" SrcFileId="1" StartOffset="288"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="amu.model.Title.java" Intrnl_Id="23">
+<LocList>
+<Loc EndOffset="279" SrcFileId="1" StartOffset="266"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S2" CovItemPrefix="amu.model.Title.java" Intrnl_Id="24">
+<LocList>
+<Loc EndOffset="305" SrcFileId="1" StartOffset="288"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="15" HierarchyLvlTypeId="14" Intrnl_Id="25" Name="getId">
+<Header>
+<Loc EndOffset="335" SrcFileId="1" StartOffset="317"/>
+</Header>
+<LocList>
+<Loc EndOffset="362" SrcFileId="1" StartOffset="317"/>
+</LocList>
+<StmntSeq Intrnl_Id="26">
+<LocList>
+<Loc EndOffset="356" SrcFileId="1" StartOffset="346"/>
+</LocList>
+<BasicStmnt CovItemId="S3" CovItemPrefix="amu.model.Title.java" Intrnl_Id="27">
+<LocList>
+<Loc EndOffset="356" SrcFileId="1" StartOffset="346"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="16" HierarchyLvlTypeId="14" Intrnl_Id="28" Name="setId">
+<Header>
+<Loc EndOffset="393" SrcFileId="1" StartOffset="368"/>
+</Header>
+<LocList>
+<Loc EndOffset="423" SrcFileId="1" StartOffset="368"/>
+</LocList>
+<StmntSeq Intrnl_Id="29">
+<LocList>
+<Loc EndOffset="417" SrcFileId="1" StartOffset="404"/>
+</LocList>
+<BasicStmnt CovItemId="S4" CovItemPrefix="amu.model.Title.java" Intrnl_Id="30">
+<LocList>
+<Loc EndOffset="417" SrcFileId="1" StartOffset="404"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="17" HierarchyLvlTypeId="14" Intrnl_Id="31" Name="getName">
+<Header>
+<Loc EndOffset="452" SrcFileId="1" StartOffset="429"/>
+</Header>
+<LocList>
+<Loc EndOffset="481" SrcFileId="1" StartOffset="429"/>
+</LocList>
+<StmntSeq Intrnl_Id="32">
+<LocList>
+<Loc EndOffset="475" SrcFileId="1" StartOffset="463"/>
+</LocList>
+<BasicStmnt CovItemId="S5" CovItemPrefix="amu.model.Title.java" Intrnl_Id="33">
+<LocList>
+<Loc EndOffset="475" SrcFileId="1" StartOffset="463"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="18" HierarchyLvlTypeId="14" Intrnl_Id="34" Name="setName">
+<Header>
+<Loc EndOffset="519" SrcFileId="1" StartOffset="487"/>
+</Header>
+<LocList>
+<Loc EndOffset="553" SrcFileId="1" StartOffset="487"/>
+</LocList>
+<StmntSeq Intrnl_Id="35">
+<LocList>
+<Loc EndOffset="547" SrcFileId="1" StartOffset="530"/>
+</LocList>
+<BasicStmnt CovItemId="S6" CovItemPrefix="amu.model.Title.java" Intrnl_Id="36">
+<LocList>
+<Loc EndOffset="547" SrcFileId="1" StartOffset="530"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="26" HierarchyLvlTypeId="13" Intrnl_Id="37" Name="Publisher">
+<Header>
+<Loc EndOffset="96" SrcFileId="2" StartOffset="50"/>
+</Header>
+<LocList>
+<Loc EndOffset="567" SrcFileId="2" StartOffset="50"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="20" HierarchyLvlTypeId="14" Intrnl_Id="38" Name="Publisher">
+<Header>
+<Loc EndOffset="168" SrcFileId="2" StartOffset="150"/>
+</Header>
+<LocList>
+<Loc EndOffset="220" SrcFileId="2" StartOffset="150"/>
+</LocList>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="21" HierarchyLvlTypeId="14" Intrnl_Id="39" Name="Publisher">
+<Header>
+<Loc EndOffset="267" SrcFileId="2" StartOffset="230"/>
+</Header>
+<LocList>
+<Loc EndOffset="323" SrcFileId="2" StartOffset="230"/>
+</LocList>
+<StmntSeq Intrnl_Id="40">
+<LocList>
+<Loc EndOffset="291" SrcFileId="2" StartOffset="278"/>
+<Loc EndOffset="317" SrcFileId="2" StartOffset="300"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="amu.model.Publisher.java" Intrnl_Id="41">
+<LocList>
+<Loc EndOffset="291" SrcFileId="2" StartOffset="278"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S2" CovItemPrefix="amu.model.Publisher.java" Intrnl_Id="42">
+<LocList>
+<Loc EndOffset="317" SrcFileId="2" StartOffset="300"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="22" HierarchyLvlTypeId="14" Intrnl_Id="43" Name="getId">
+<Header>
+<Loc EndOffset="347" SrcFileId="2" StartOffset="329"/>
+</Header>
+<LocList>
+<Loc EndOffset="374" SrcFileId="2" StartOffset="329"/>
+</LocList>
+<StmntSeq Intrnl_Id="44">
+<LocList>
+<Loc EndOffset="368" SrcFileId="2" StartOffset="358"/>
+</LocList>
+<BasicStmnt CovItemId="S3" CovItemPrefix="amu.model.Publisher.java" Intrnl_Id="45">
+<LocList>
+<Loc EndOffset="368" SrcFileId="2" StartOffset="358"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="23" HierarchyLvlTypeId="14" Intrnl_Id="46" Name="setId">
+<Header>
+<Loc EndOffset="405" SrcFileId="2" StartOffset="380"/>
+</Header>
+<LocList>
+<Loc EndOffset="435" SrcFileId="2" StartOffset="380"/>
+</LocList>
+<StmntSeq Intrnl_Id="47">
+<LocList>
+<Loc EndOffset="429" SrcFileId="2" StartOffset="416"/>
+</LocList>
+<BasicStmnt CovItemId="S4" CovItemPrefix="amu.model.Publisher.java" Intrnl_Id="48">
+<LocList>
+<Loc EndOffset="429" SrcFileId="2" StartOffset="416"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="24" HierarchyLvlTypeId="14" Intrnl_Id="49" Name="getName">
+<Header>
+<Loc EndOffset="464" SrcFileId="2" StartOffset="441"/>
+</Header>
+<LocList>
+<Loc EndOffset="493" SrcFileId="2" StartOffset="441"/>
+</LocList>
+<StmntSeq Intrnl_Id="50">
+<LocList>
+<Loc EndOffset="487" SrcFileId="2" StartOffset="475"/>
+</LocList>
+<BasicStmnt CovItemId="S5" CovItemPrefix="amu.model.Publisher.java" Intrnl_Id="51">
+<LocList>
+<Loc EndOffset="487" SrcFileId="2" StartOffset="475"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="25" HierarchyLvlTypeId="14" Intrnl_Id="52" Name="setName">
+<Header>
+<Loc EndOffset="531" SrcFileId="2" StartOffset="499"/>
+</Header>
+<LocList>
+<Loc EndOffset="565" SrcFileId="2" StartOffset="499"/>
+</LocList>
+<StmntSeq Intrnl_Id="53">
+<LocList>
+<Loc EndOffset="559" SrcFileId="2" StartOffset="542"/>
+</LocList>
+<BasicStmnt CovItemId="S6" CovItemPrefix="amu.model.Publisher.java" Intrnl_Id="54">
+<LocList>
+<Loc EndOffset="559" SrcFileId="2" StartOffset="542"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="36" HierarchyLvlTypeId="13" Intrnl_Id="55" Name="Order">
+<Header>
+<Loc EndOffset="66" SrcFileId="3" StartOffset="48"/>
+</Header>
+<LocList>
+<Loc EndOffset="1552" SrcFileId="3" StartOffset="48"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="27" HierarchyLvlTypeId="14" Intrnl_Id="56" Name="Order">
+<Header>
+<Loc EndOffset="384" SrcFileId="3" StartOffset="280"/>
+</Header>
+<LocList>
+<Loc EndOffset="578" SrcFileId="3" StartOffset="280"/>
+</LocList>
+<StmntSeq Intrnl_Id="57">
+<LocList>
+<Loc EndOffset="408" SrcFileId="3" StartOffset="395"/>
+<Loc EndOffset="442" SrcFileId="3" StartOffset="417"/>
+<Loc EndOffset="474" SrcFileId="3" StartOffset="451"/>
+<Loc EndOffset="514" SrcFileId="3" StartOffset="483"/>
+<Loc EndOffset="542" SrcFileId="3" StartOffset="523"/>
+<Loc EndOffset="572" SrcFileId="3" StartOffset="551"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="amu.model.Order.java" Intrnl_Id="58">
+<LocList>
+<Loc EndOffset="408" SrcFileId="3" StartOffset="395"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S2" CovItemPrefix="amu.model.Order.java" Intrnl_Id="59">
+<LocList>
+<Loc EndOffset="442" SrcFileId="3" StartOffset="417"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S3" CovItemPrefix="amu.model.Order.java" Intrnl_Id="60">
+<LocList>
+<Loc EndOffset="474" SrcFileId="3" StartOffset="451"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S4" CovItemPrefix="amu.model.Order.java" Intrnl_Id="61">
+<LocList>
+<Loc EndOffset="514" SrcFileId="3" StartOffset="483"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S5" CovItemPrefix="amu.model.Order.java" Intrnl_Id="62">
+<LocList>
+<Loc EndOffset="542" SrcFileId="3" StartOffset="523"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S6" CovItemPrefix="amu.model.Order.java" Intrnl_Id="63">
+<LocList>
+<Loc EndOffset="572" SrcFileId="3" StartOffset="551"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="28" HierarchyLvlTypeId="14" Intrnl_Id="64" Name="Order">
+<Header>
+<Loc EndOffset="649" SrcFileId="3" StartOffset="584"/>
+</Header>
+<LocList>
+<Loc EndOffset="836" SrcFileId="3" StartOffset="584"/>
+</LocList>
+<StmntSeq Intrnl_Id="65">
+<LocList>
+<Loc EndOffset="675" SrcFileId="3" StartOffset="660"/>
+<Loc EndOffset="709" SrcFileId="3" StartOffset="684"/>
+<Loc EndOffset="741" SrcFileId="3" StartOffset="718"/>
+<Loc EndOffset="774" SrcFileId="3" StartOffset="750"/>
+<Loc EndOffset="805" SrcFileId="3" StartOffset="783"/>
+<Loc EndOffset="830" SrcFileId="3" StartOffset="814"/>
+</LocList>
+<BasicStmnt CovItemId="S7" CovItemPrefix="amu.model.Order.java" Intrnl_Id="66">
+<LocList>
+<Loc EndOffset="675" SrcFileId="3" StartOffset="660"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S8" CovItemPrefix="amu.model.Order.java" Intrnl_Id="67">
+<LocList>
+<Loc EndOffset="709" SrcFileId="3" StartOffset="684"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S9" CovItemPrefix="amu.model.Order.java" Intrnl_Id="68">
+<LocList>
+<Loc EndOffset="741" SrcFileId="3" StartOffset="718"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S10" CovItemPrefix="amu.model.Order.java" Intrnl_Id="69">
+<LocList>
+<Loc EndOffset="774" SrcFileId="3" StartOffset="750"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S11" CovItemPrefix="amu.model.Order.java" Intrnl_Id="70">
+<LocList>
+<Loc EndOffset="805" SrcFileId="3" StartOffset="783"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S12" CovItemPrefix="amu.model.Order.java" Intrnl_Id="71">
+<LocList>
+<Loc EndOffset="830" SrcFileId="3" StartOffset="814"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="29" HierarchyLvlTypeId="14" Intrnl_Id="72" Name="getId">
+<Header>
+<Loc EndOffset="864" SrcFileId="3" StartOffset="842"/>
+</Header>
+<LocList>
+<Loc EndOffset="891" SrcFileId="3" StartOffset="842"/>
+</LocList>
+<StmntSeq Intrnl_Id="73">
+<LocList>
+<Loc EndOffset="885" SrcFileId="3" StartOffset="875"/>
+</LocList>
+<BasicStmnt CovItemId="S13" CovItemPrefix="amu.model.Order.java" Intrnl_Id="74">
+<LocList>
+<Loc EndOffset="885" SrcFileId="3" StartOffset="875"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="30" HierarchyLvlTypeId="14" Intrnl_Id="75" Name="getCustomer">
+<Header>
+<Loc EndOffset="926" SrcFileId="3" StartOffset="897"/>
+</Header>
+<LocList>
+<Loc EndOffset="959" SrcFileId="3" StartOffset="897"/>
+</LocList>
+<StmntSeq Intrnl_Id="76">
+<LocList>
+<Loc EndOffset="953" SrcFileId="3" StartOffset="937"/>
+</LocList>
+<BasicStmnt CovItemId="S14" CovItemPrefix="amu.model.Order.java" Intrnl_Id="77">
+<LocList>
+<Loc EndOffset="953" SrcFileId="3" StartOffset="937"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="31" HierarchyLvlTypeId="14" Intrnl_Id="78" Name="getAddress">
+<Header>
+<Loc EndOffset="992" SrcFileId="3" StartOffset="965"/>
+</Header>
+<LocList>
+<Loc EndOffset="1024" SrcFileId="3" StartOffset="965"/>
+</LocList>
+<StmntSeq Intrnl_Id="79">
+<LocList>
+<Loc EndOffset="1018" SrcFileId="3" StartOffset="1003"/>
+</LocList>
+<BasicStmnt CovItemId="S15" CovItemPrefix="amu.model.Order.java" Intrnl_Id="80">
+<LocList>
+<Loc EndOffset="1018" SrcFileId="3" StartOffset="1003"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="32" HierarchyLvlTypeId="14" Intrnl_Id="81" Name="getCreatedDate">
+<Header>
+<Loc EndOffset="1062" SrcFileId="3" StartOffset="1030"/>
+</Header>
+<LocList>
+<Loc EndOffset="1098" SrcFileId="3" StartOffset="1030"/>
+</LocList>
+<StmntSeq Intrnl_Id="82">
+<LocList>
+<Loc EndOffset="1092" SrcFileId="3" StartOffset="1073"/>
+</LocList>
+<BasicStmnt CovItemId="S16" CovItemPrefix="amu.model.Order.java" Intrnl_Id="83">
+<LocList>
+<Loc EndOffset="1092" SrcFileId="3" StartOffset="1073"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="33" HierarchyLvlTypeId="14" Intrnl_Id="84" Name="getValue">
+<Header>
+<Loc EndOffset="1128" SrcFileId="3" StartOffset="1104"/>
+</Header>
+<LocList>
+<Loc EndOffset="1158" SrcFileId="3" StartOffset="1104"/>
+</LocList>
+<StmntSeq Intrnl_Id="85">
+<LocList>
+<Loc EndOffset="1152" SrcFileId="3" StartOffset="1139"/>
+</LocList>
+<BasicStmnt CovItemId="S17" CovItemPrefix="amu.model.Order.java" Intrnl_Id="86">
+<LocList>
+<Loc EndOffset="1152" SrcFileId="3" StartOffset="1139"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="34" HierarchyLvlTypeId="14" Intrnl_Id="87" Name="getStatus">
+<Header>
+<Loc EndOffset="1186" SrcFileId="3" StartOffset="1164"/>
+</Header>
+<LocList>
+<Loc EndOffset="1217" SrcFileId="3" StartOffset="1164"/>
+</LocList>
+<StmntSeq Intrnl_Id="88">
+<LocList>
+<Loc EndOffset="1211" SrcFileId="3" StartOffset="1197"/>
+</LocList>
+<BasicStmnt CovItemId="S18" CovItemPrefix="amu.model.Order.java" Intrnl_Id="89">
+<LocList>
+<Loc EndOffset="1211" SrcFileId="3" StartOffset="1197"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="35" HierarchyLvlTypeId="14" Intrnl_Id="90" Name="getStatusText">
+<Header>
+<Loc EndOffset="1256" SrcFileId="3" StartOffset="1227"/>
+</Header>
+<LocList>
+<Loc EndOffset="1550" SrcFileId="3" StartOffset="1227"/>
+</LocList>
+<StmntSeq Intrnl_Id="91">
+<LocList>
+<Loc EndOffset="1544" SrcFileId="3" StartOffset="1267"/>
+</LocList>
+<CondStmnt CovItemId="S19" CovItemPrefix="amu.model.Order.java" Intrnl_Id="92">
+<Branch CovItemId="B1" CovItemPrefix="amu.model.Order.java" Implct="false" Intrnl_Id="93">
+<Cond>
+<Loc EndOffset="1311" SrcFileId="3" StartOffset="1305"/>
+</Cond>
+<LocList>
+<Loc EndOffset="1349" SrcFileId="3" StartOffset="1330"/>
+</LocList>
+<StmntSeq Intrnl_Id="94">
+<LocList>
+<Loc EndOffset="1349" SrcFileId="3" StartOffset="1330"/>
+</LocList>
+<BasicStmnt CovItemId="S20" CovItemPrefix="amu.model.Order.java" Intrnl_Id="95">
+<LocList>
+<Loc EndOffset="1349" SrcFileId="3" StartOffset="1330"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B2" CovItemPrefix="amu.model.Order.java" Implct="false" Intrnl_Id="96">
+<Cond>
+<Loc EndOffset="1368" SrcFileId="3" StartOffset="1362"/>
+</Cond>
+<LocList>
+<Loc EndOffset="1403" SrcFileId="3" StartOffset="1386"/>
+</LocList>
+<StmntSeq Intrnl_Id="97">
+<LocList>
+<Loc EndOffset="1403" SrcFileId="3" StartOffset="1386"/>
+</LocList>
+<BasicStmnt CovItemId="S21" CovItemPrefix="amu.model.Order.java" Intrnl_Id="98">
+<LocList>
+<Loc EndOffset="1403" SrcFileId="3" StartOffset="1386"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B3" CovItemPrefix="amu.model.Order.java" Implct="false" Intrnl_Id="99">
+<Cond>
+<Loc EndOffset="1422" SrcFileId="3" StartOffset="1416"/>
+</Cond>
+<LocList/>
+<StmntSeq Intrnl_Id="100">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B4" CovItemPrefix="amu.model.Order.java" Implct="false" Intrnl_Id="101">
+<Cond>
+<Loc EndOffset="1443" SrcFileId="3" StartOffset="1436"/>
+</Cond>
+<LocList>
+<Loc EndOffset="1478" SrcFileId="3" StartOffset="1461"/>
+</LocList>
+<StmntSeq Intrnl_Id="102">
+<LocList>
+<Loc EndOffset="1478" SrcFileId="3" StartOffset="1461"/>
+</LocList>
+<BasicStmnt CovItemId="S22" CovItemPrefix="amu.model.Order.java" Intrnl_Id="103">
+<LocList>
+<Loc EndOffset="1478" SrcFileId="3" StartOffset="1461"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B5" CovItemPrefix="amu.model.Order.java" Implct="false" Intrnl_Id="104">
+<Cond>
+<Loc EndOffset="1498" SrcFileId="3" StartOffset="1491"/>
+</Cond>
+<LocList>
+<Loc EndOffset="1534" SrcFileId="3" StartOffset="1516"/>
+</LocList>
+<StmntSeq Intrnl_Id="105">
+<LocList>
+<Loc EndOffset="1534" SrcFileId="3" StartOffset="1516"/>
+</LocList>
+<BasicStmnt CovItemId="S23" CovItemPrefix="amu.model.Order.java" Intrnl_Id="106">
+<LocList>
+<Loc EndOffset="1534" SrcFileId="3" StartOffset="1516"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1273" SrcFileId="3" StartOffset="1267"/>
+<LocList>
+<Loc EndOffset="1544" SrcFileId="3" StartOffset="1267"/>
+</LocList>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="47" HierarchyLvlTypeId="13" Intrnl_Id="107" Name="Customer">
+<Header>
+<Loc EndOffset="169" SrcFileId="4" StartOffset="124"/>
+</Header>
+<LocList>
+<Loc EndOffset="1044" SrcFileId="4" StartOffset="124"/>
+</LocList>
+<StmntSeq Intrnl_Id="108">
+<LocList>
+<Loc EndOffset="314" SrcFileId="4" StartOffset="276"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="amu.model.Customer.java" Intrnl_Id="109">
+<LocList>
+<Loc EndOffset="314" SrcFileId="4" StartOffset="276"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<HierarchyLvl HierarchyLvlId="37" HierarchyLvlTypeId="14" Intrnl_Id="110" Name="getId">
+<Header>
+<Loc EndOffset="338" SrcFileId="4" StartOffset="320"/>
+</Header>
+<LocList>
+<Loc EndOffset="365" SrcFileId="4" StartOffset="320"/>
+</LocList>
+<StmntSeq Intrnl_Id="111">
+<LocList>
+<Loc EndOffset="359" SrcFileId="4" StartOffset="349"/>
+</LocList>
+<BasicStmnt CovItemId="S2" CovItemPrefix="amu.model.Customer.java" Intrnl_Id="112">
+<LocList>
+<Loc EndOffset="359" SrcFileId="4" StartOffset="349"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="38" HierarchyLvlTypeId="14" Intrnl_Id="113" Name="setId">
+<Header>
+<Loc EndOffset="396" SrcFileId="4" StartOffset="371"/>
+</Header>
+<LocList>
+<Loc EndOffset="426" SrcFileId="4" StartOffset="371"/>
+</LocList>
+<StmntSeq Intrnl_Id="114">
+<LocList>
+<Loc EndOffset="420" SrcFileId="4" StartOffset="407"/>
+</LocList>
+<BasicStmnt CovItemId="S3" CovItemPrefix="amu.model.Customer.java" Intrnl_Id="115">
+<LocList>
+<Loc EndOffset="420" SrcFileId="4" StartOffset="407"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="39" HierarchyLvlTypeId="14" Intrnl_Id="116" Name="getEmail">
+<Header>
+<Loc EndOffset="456" SrcFileId="4" StartOffset="432"/>
+</Header>
+<LocList>
+<Loc EndOffset="486" SrcFileId="4" StartOffset="432"/>
+</LocList>
+<StmntSeq Intrnl_Id="117">
+<LocList>
+<Loc EndOffset="480" SrcFileId="4" StartOffset="467"/>
+</LocList>
+<BasicStmnt CovItemId="S4" CovItemPrefix="amu.model.Customer.java" Intrnl_Id="118">
+<LocList>
+<Loc EndOffset="480" SrcFileId="4" StartOffset="467"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="40" HierarchyLvlTypeId="14" Intrnl_Id="119" Name="setEmail">
+<Header>
+<Loc EndOffset="526" SrcFileId="4" StartOffset="492"/>
+</Header>
+<LocList>
+<Loc EndOffset="562" SrcFileId="4" StartOffset="492"/>
+</LocList>
+<StmntSeq Intrnl_Id="120">
+<LocList>
+<Loc EndOffset="556" SrcFileId="4" StartOffset="537"/>
+</LocList>
+<BasicStmnt CovItemId="S5" CovItemPrefix="amu.model.Customer.java" Intrnl_Id="121">
+<LocList>
+<Loc EndOffset="556" SrcFileId="4" StartOffset="537"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="41" HierarchyLvlTypeId="14" Intrnl_Id="122" Name="getPassword">
+<Header>
+<Loc EndOffset="595" SrcFileId="4" StartOffset="568"/>
+</Header>
+<LocList>
+<Loc EndOffset="628" SrcFileId="4" StartOffset="568"/>
+</LocList>
+<StmntSeq Intrnl_Id="123">
+<LocList>
+<Loc EndOffset="622" SrcFileId="4" StartOffset="606"/>
+</LocList>
+<BasicStmnt CovItemId="S6" CovItemPrefix="amu.model.Customer.java" Intrnl_Id="124">
+<LocList>
+<Loc EndOffset="622" SrcFileId="4" StartOffset="606"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="42" HierarchyLvlTypeId="14" Intrnl_Id="125" Name="setPassword">
+<Header>
+<Loc EndOffset="674" SrcFileId="4" StartOffset="634"/>
+</Header>
+<LocList>
+<Loc EndOffset="716" SrcFileId="4" StartOffset="634"/>
+</LocList>
+<StmntSeq Intrnl_Id="126">
+<LocList>
+<Loc EndOffset="710" SrcFileId="4" StartOffset="685"/>
+</LocList>
+<BasicStmnt CovItemId="S7" CovItemPrefix="amu.model.Customer.java" Intrnl_Id="127">
+<LocList>
+<Loc EndOffset="710" SrcFileId="4" StartOffset="685"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="43" HierarchyLvlTypeId="14" Intrnl_Id="128" Name="getName">
+<Header>
+<Loc EndOffset="745" SrcFileId="4" StartOffset="722"/>
+</Header>
+<LocList>
+<Loc EndOffset="774" SrcFileId="4" StartOffset="722"/>
+</LocList>
+<StmntSeq Intrnl_Id="129">
+<LocList>
+<Loc EndOffset="768" SrcFileId="4" StartOffset="756"/>
+</LocList>
+<BasicStmnt CovItemId="S8" CovItemPrefix="amu.model.Customer.java" Intrnl_Id="130">
+<LocList>
+<Loc EndOffset="768" SrcFileId="4" StartOffset="756"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="44" HierarchyLvlTypeId="14" Intrnl_Id="131" Name="setName">
+<Header>
+<Loc EndOffset="812" SrcFileId="4" StartOffset="780"/>
+</Header>
+<LocList>
+<Loc EndOffset="846" SrcFileId="4" StartOffset="780"/>
+</LocList>
+<StmntSeq Intrnl_Id="132">
+<LocList>
+<Loc EndOffset="840" SrcFileId="4" StartOffset="823"/>
+</LocList>
+<BasicStmnt CovItemId="S9" CovItemPrefix="amu.model.Customer.java" Intrnl_Id="133">
+<LocList>
+<Loc EndOffset="840" SrcFileId="4" StartOffset="823"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="45" HierarchyLvlTypeId="14" Intrnl_Id="134" Name="getActivationToken">
+<Header>
+<Loc EndOffset="886" SrcFileId="4" StartOffset="852"/>
+</Header>
+<LocList>
+<Loc EndOffset="926" SrcFileId="4" StartOffset="852"/>
+</LocList>
+<StmntSeq Intrnl_Id="135">
+<LocList>
+<Loc EndOffset="920" SrcFileId="4" StartOffset="897"/>
+</LocList>
+<BasicStmnt CovItemId="S10" CovItemPrefix="amu.model.Customer.java" Intrnl_Id="136">
+<LocList>
+<Loc EndOffset="920" SrcFileId="4" StartOffset="897"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="46" HierarchyLvlTypeId="14" Intrnl_Id="137" Name="setActivationToken">
+<Header>
+<Loc EndOffset="986" SrcFileId="4" StartOffset="932"/>
+</Header>
+<LocList>
+<Loc EndOffset="1042" SrcFileId="4" StartOffset="932"/>
+</LocList>
+<StmntSeq Intrnl_Id="138">
+<LocList>
+<Loc EndOffset="1036" SrcFileId="4" StartOffset="997"/>
+</LocList>
+<BasicStmnt CovItemId="S11" CovItemPrefix="amu.model.Customer.java" Intrnl_Id="139">
+<LocList>
+<Loc EndOffset="1036" SrcFileId="4" StartOffset="997"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="56" HierarchyLvlTypeId="13" Intrnl_Id="140" Name="CreditCard">
+<Header>
+<Loc EndOffset="71" SrcFileId="5" StartOffset="48"/>
+</Header>
+<LocList>
+<Loc EndOffset="1717" SrcFileId="5" StartOffset="48"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="48" HierarchyLvlTypeId="14" Intrnl_Id="141" Name="CreditCard">
+<Header>
+<Loc EndOffset="357" SrcFileId="5" StartOffset="240"/>
+</Header>
+<LocList>
+<Loc EndOffset="555" SrcFileId="5" StartOffset="240"/>
+</LocList>
+<StmntSeq Intrnl_Id="142">
+<LocList>
+<Loc EndOffset="381" SrcFileId="5" StartOffset="368"/>
+<Loc EndOffset="415" SrcFileId="5" StartOffset="390"/>
+<Loc EndOffset="465" SrcFileId="5" StartOffset="424"/>
+<Loc EndOffset="503" SrcFileId="5" StartOffset="474"/>
+<Loc EndOffset="549" SrcFileId="5" StartOffset="512"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="amu.model.CreditCard.java" Intrnl_Id="143">
+<LocList>
+<Loc EndOffset="381" SrcFileId="5" StartOffset="368"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S2" CovItemPrefix="amu.model.CreditCard.java" Intrnl_Id="144">
+<LocList>
+<Loc EndOffset="415" SrcFileId="5" StartOffset="390"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S3" CovItemPrefix="amu.model.CreditCard.java" Intrnl_Id="145">
+<LocList>
+<Loc EndOffset="465" SrcFileId="5" StartOffset="424"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S4" CovItemPrefix="amu.model.CreditCard.java" Intrnl_Id="146">
+<LocList>
+<Loc EndOffset="503" SrcFileId="5" StartOffset="474"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S5" CovItemPrefix="amu.model.CreditCard.java" Intrnl_Id="147">
+<LocList>
+<Loc EndOffset="549" SrcFileId="5" StartOffset="512"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="49" HierarchyLvlTypeId="14" Intrnl_Id="148" Name="CreditCard">
+<Header>
+<Loc EndOffset="666" SrcFileId="5" StartOffset="561"/>
+</Header>
+<LocList>
+<Loc EndOffset="866" SrcFileId="5" StartOffset="561"/>
+</LocList>
+<StmntSeq Intrnl_Id="149">
+<LocList>
+<Loc EndOffset="692" SrcFileId="5" StartOffset="677"/>
+<Loc EndOffset="726" SrcFileId="5" StartOffset="701"/>
+<Loc EndOffset="776" SrcFileId="5" StartOffset="735"/>
+<Loc EndOffset="814" SrcFileId="5" StartOffset="785"/>
+<Loc EndOffset="860" SrcFileId="5" StartOffset="823"/>
+</LocList>
+<BasicStmnt CovItemId="S6" CovItemPrefix="amu.model.CreditCard.java" Intrnl_Id="150">
+<LocList>
+<Loc EndOffset="692" SrcFileId="5" StartOffset="677"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S7" CovItemPrefix="amu.model.CreditCard.java" Intrnl_Id="151">
+<LocList>
+<Loc EndOffset="726" SrcFileId="5" StartOffset="701"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S8" CovItemPrefix="amu.model.CreditCard.java" Intrnl_Id="152">
+<LocList>
+<Loc EndOffset="776" SrcFileId="5" StartOffset="735"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S9" CovItemPrefix="amu.model.CreditCard.java" Intrnl_Id="153">
+<LocList>
+<Loc EndOffset="814" SrcFileId="5" StartOffset="785"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S10" CovItemPrefix="amu.model.CreditCard.java" Intrnl_Id="154">
+<LocList>
+<Loc EndOffset="860" SrcFileId="5" StartOffset="823"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="50" HierarchyLvlTypeId="14" Intrnl_Id="155" Name="getId">
+<Header>
+<Loc EndOffset="894" SrcFileId="5" StartOffset="872"/>
+</Header>
+<LocList>
+<Loc EndOffset="921" SrcFileId="5" StartOffset="872"/>
+</LocList>
+<StmntSeq Intrnl_Id="156">
+<LocList>
+<Loc EndOffset="915" SrcFileId="5" StartOffset="905"/>
+</LocList>
+<BasicStmnt CovItemId="S11" CovItemPrefix="amu.model.CreditCard.java" Intrnl_Id="157">
+<LocList>
+<Loc EndOffset="915" SrcFileId="5" StartOffset="905"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="51" HierarchyLvlTypeId="14" Intrnl_Id="158" Name="getCustomer">
+<Header>
+<Loc EndOffset="956" SrcFileId="5" StartOffset="927"/>
+</Header>
+<LocList>
+<Loc EndOffset="989" SrcFileId="5" StartOffset="927"/>
+</LocList>
+<StmntSeq Intrnl_Id="159">
+<LocList>
+<Loc EndOffset="983" SrcFileId="5" StartOffset="967"/>
+</LocList>
+<BasicStmnt CovItemId="S12" CovItemPrefix="amu.model.CreditCard.java" Intrnl_Id="160">
+<LocList>
+<Loc EndOffset="983" SrcFileId="5" StartOffset="967"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="52" HierarchyLvlTypeId="14" Intrnl_Id="161" Name="getCreditCardNumber">
+<Header>
+<Loc EndOffset="1030" SrcFileId="5" StartOffset="995"/>
+</Header>
+<LocList>
+<Loc EndOffset="1071" SrcFileId="5" StartOffset="995"/>
+</LocList>
+<StmntSeq Intrnl_Id="162">
+<LocList>
+<Loc EndOffset="1065" SrcFileId="5" StartOffset="1041"/>
+</LocList>
+<BasicStmnt CovItemId="S13" CovItemPrefix="amu.model.CreditCard.java" Intrnl_Id="163">
+<LocList>
+<Loc EndOffset="1065" SrcFileId="5" StartOffset="1041"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="53" HierarchyLvlTypeId="14" Intrnl_Id="164" Name="getMaskedCreditCardNumber">
+<Header>
+<Loc EndOffset="1118" SrcFileId="5" StartOffset="1077"/>
+</Header>
+<LocList>
+<Loc EndOffset="1565" SrcFileId="5" StartOffset="1077"/>
+</LocList>
+<StmntSeq Intrnl_Id="165">
+<LocList>
+<Loc EndOffset="1213" SrcFileId="5" StartOffset="1129"/>
+<Loc EndOffset="1509" SrcFileId="5" StartOffset="1222"/>
+<Loc EndOffset="1559" SrcFileId="5" StartOffset="1518"/>
+</LocList>
+<BasicStmnt CovItemId="S14" CovItemPrefix="amu.model.CreditCard.java" Intrnl_Id="166">
+<LocList>
+<Loc EndOffset="1213" SrcFileId="5" StartOffset="1129"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S15" CovItemPrefix="amu.model.CreditCard.java" Intrnl_Id="167" MltplExecId="L1-2" MltplExecPrefix="amu.model.CreditCard.java" NvrExecId="L1-0" NvrExecPrefix="amu.model.CreditCard.java" OnceExecutedId="L1-1" OnceExecutedPrefix="amu.model.CreditCard.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="168">
+<LocList>
+<Loc EndOffset="1499" SrcFileId="5" StartOffset="1296"/>
+</LocList>
+<CondStmnt CovItemId="S16" CovItemPrefix="amu.model.CreditCard.java" Intrnl_Id="169">
+<Branch CovItemId="B1" CovItemPrefix="amu.model.CreditCard.java" Implct="false" Intrnl_Id="170">
+<Cond/>
+<LocList>
+<Loc EndOffset="1426" SrcFileId="5" StartOffset="1336"/>
+</LocList>
+<StmntSeq Intrnl_Id="171">
+<LocList>
+<Loc EndOffset="1412" SrcFileId="5" StartOffset="1354"/>
+</LocList>
+<BasicStmnt CovItemId="S17" CovItemPrefix="amu.model.CreditCard.java" Intrnl_Id="172">
+<LocList>
+<Loc EndOffset="1412" SrcFileId="5" StartOffset="1354"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B2" CovItemPrefix="amu.model.CreditCard.java" Implct="false" Intrnl_Id="173">
+<Cond>
+<Loc EndOffset="1431" SrcFileId="5" StartOffset="1427"/>
+</Cond>
+<LocList>
+<Loc EndOffset="1499" SrcFileId="5" StartOffset="1432"/>
+</LocList>
+<StmntSeq Intrnl_Id="174">
+<LocList>
+<Loc EndOffset="1485" SrcFileId="5" StartOffset="1450"/>
+</LocList>
+<BasicStmnt CovItemId="S18" CovItemPrefix="amu.model.CreditCard.java" Intrnl_Id="175">
+<LocList>
+<Loc EndOffset="1485" SrcFileId="5" StartOffset="1450"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1298" SrcFileId="5" StartOffset="1296"/>
+<LocList>
+<Loc EndOffset="1499" SrcFileId="5" StartOffset="1296"/>
+</LocList>
+<RootTerm CovItemId="C2" CovItemPrefix="amu.model.CreditCard.java" Intrnl_Id="176">
+<BasicBoolTerm Intrnl_Id="177">
+<LocList>
+<Loc EndOffset="1334" SrcFileId="5" StartOffset="1300"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+<Keyword EndOffset="1225" SrcFileId="5" StartOffset="1222"/>
+<LocList>
+<Loc EndOffset="1509" SrcFileId="5" StartOffset="1222"/>
+</LocList>
+<RootTerm CovItemId="C1" CovItemPrefix="amu.model.CreditCard.java" Intrnl_Id="178">
+<BasicBoolTerm Intrnl_Id="179">
+<LocList>
+<Loc EndOffset="1267" SrcFileId="5" StartOffset="1238"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+<BasicStmnt CovItemId="S19" CovItemPrefix="amu.model.CreditCard.java" Intrnl_Id="180">
+<LocList>
+<Loc EndOffset="1559" SrcFileId="5" StartOffset="1518"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="54" HierarchyLvlTypeId="14" Intrnl_Id="181" Name="getExpiryDate">
+<Header>
+<Loc EndOffset="1602" SrcFileId="5" StartOffset="1571"/>
+</Header>
+<LocList>
+<Loc EndOffset="1637" SrcFileId="5" StartOffset="1571"/>
+</LocList>
+<StmntSeq Intrnl_Id="182">
+<LocList>
+<Loc EndOffset="1631" SrcFileId="5" StartOffset="1613"/>
+</LocList>
+<BasicStmnt CovItemId="S20" CovItemPrefix="amu.model.CreditCard.java" Intrnl_Id="183">
+<LocList>
+<Loc EndOffset="1631" SrcFileId="5" StartOffset="1613"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="55" HierarchyLvlTypeId="14" Intrnl_Id="184" Name="getCardholderName">
+<Header>
+<Loc EndOffset="1676" SrcFileId="5" StartOffset="1643"/>
+</Header>
+<LocList>
+<Loc EndOffset="1715" SrcFileId="5" StartOffset="1643"/>
+</LocList>
+<StmntSeq Intrnl_Id="185">
+<LocList>
+<Loc EndOffset="1709" SrcFileId="5" StartOffset="1687"/>
+</LocList>
+<BasicStmnt CovItemId="S21" CovItemPrefix="amu.model.CreditCard.java" Intrnl_Id="186">
+<LocList>
+<Loc EndOffset="1709" SrcFileId="5" StartOffset="1687"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="57" HierarchyLvlTypeId="13" Intrnl_Id="187" Name="Category">
+<Header>
+<Loc EndOffset="65" SrcFileId="6" StartOffset="44"/>
+</Header>
+<LocList>
+<Loc EndOffset="188" SrcFileId="6" StartOffset="44"/>
+</LocList>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="64" HierarchyLvlTypeId="13" Intrnl_Id="188" Name="CartItem">
+<Header>
+<Loc EndOffset="95" SrcFileId="7" StartOffset="50"/>
+</Header>
+<LocList>
+<Loc EndOffset="622" SrcFileId="7" StartOffset="50"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="58" HierarchyLvlTypeId="14" Intrnl_Id="189" Name="CartItem">
+<Header>
+<Loc EndOffset="192" SrcFileId="7" StartOffset="152"/>
+</Header>
+<LocList>
+<Loc EndOffset="264" SrcFileId="7" StartOffset="152"/>
+</LocList>
+<StmntSeq Intrnl_Id="190">
+<LocList>
+<Loc EndOffset="224" SrcFileId="7" StartOffset="207"/>
+<Loc EndOffset="258" SrcFileId="7" StartOffset="233"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="amu.model.CartItem.java" Intrnl_Id="191">
+<LocList>
+<Loc EndOffset="224" SrcFileId="7" StartOffset="207"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S2" CovItemPrefix="amu.model.CartItem.java" Intrnl_Id="192">
+<LocList>
+<Loc EndOffset="258" SrcFileId="7" StartOffset="233"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="59" HierarchyLvlTypeId="14" Intrnl_Id="193" Name="getBook">
+<Header>
+<Loc EndOffset="295" SrcFileId="7" StartOffset="274"/>
+</Header>
+<LocList>
+<Loc EndOffset="324" SrcFileId="7" StartOffset="274"/>
+</LocList>
+<StmntSeq Intrnl_Id="194">
+<LocList>
+<Loc EndOffset="318" SrcFileId="7" StartOffset="306"/>
+</LocList>
+<BasicStmnt CovItemId="S3" CovItemPrefix="amu.model.CartItem.java" Intrnl_Id="195">
+<LocList>
+<Loc EndOffset="318" SrcFileId="7" StartOffset="306"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="60" HierarchyLvlTypeId="14" Intrnl_Id="196" Name="setBook">
+<Header>
+<Loc EndOffset="360" SrcFileId="7" StartOffset="330"/>
+</Header>
+<LocList>
+<Loc EndOffset="394" SrcFileId="7" StartOffset="330"/>
+</LocList>
+<StmntSeq Intrnl_Id="197">
+<LocList>
+<Loc EndOffset="388" SrcFileId="7" StartOffset="371"/>
+</LocList>
+<BasicStmnt CovItemId="S4" CovItemPrefix="amu.model.CartItem.java" Intrnl_Id="198">
+<LocList>
+<Loc EndOffset="388" SrcFileId="7" StartOffset="371"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="61" HierarchyLvlTypeId="14" Intrnl_Id="199" Name="getQuantity">
+<Header>
+<Loc EndOffset="424" SrcFileId="7" StartOffset="400"/>
+</Header>
+<LocList>
+<Loc EndOffset="457" SrcFileId="7" StartOffset="400"/>
+</LocList>
+<StmntSeq Intrnl_Id="200">
+<LocList>
+<Loc EndOffset="451" SrcFileId="7" StartOffset="435"/>
+</LocList>
+<BasicStmnt CovItemId="S5" CovItemPrefix="amu.model.CartItem.java" Intrnl_Id="201">
+<LocList>
+<Loc EndOffset="451" SrcFileId="7" StartOffset="435"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="62" HierarchyLvlTypeId="14" Intrnl_Id="202" Name="setQuantity">
+<Header>
+<Loc EndOffset="500" SrcFileId="7" StartOffset="463"/>
+</Header>
+<LocList>
+<Loc EndOffset="542" SrcFileId="7" StartOffset="463"/>
+</LocList>
+<StmntSeq Intrnl_Id="203">
+<LocList>
+<Loc EndOffset="536" SrcFileId="7" StartOffset="511"/>
+</LocList>
+<BasicStmnt CovItemId="S6" CovItemPrefix="amu.model.CartItem.java" Intrnl_Id="204">
+<LocList>
+<Loc EndOffset="536" SrcFileId="7" StartOffset="511"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="63" HierarchyLvlTypeId="14" Intrnl_Id="205" Name="addQuantity">
+<Header>
+<Loc EndOffset="578" SrcFileId="7" StartOffset="548"/>
+</Header>
+<LocList>
+<Loc EndOffset="620" SrcFileId="7" StartOffset="548"/>
+</LocList>
+<StmntSeq Intrnl_Id="206">
+<LocList>
+<Loc EndOffset="614" SrcFileId="7" StartOffset="588"/>
+</LocList>
+<BasicStmnt CovItemId="S7" CovItemPrefix="amu.model.CartItem.java" Intrnl_Id="207">
+<LocList>
+<Loc EndOffset="614" SrcFileId="7" StartOffset="588"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="76" HierarchyLvlTypeId="13" Intrnl_Id="208" Name="Cart">
+<Header>
+<Loc EndOffset="139" SrcFileId="8" StartOffset="98"/>
+</Header>
+<LocList>
+<Loc EndOffset="2218" SrcFileId="8" StartOffset="98"/>
+</LocList>
+<StmntSeq Intrnl_Id="209">
+<LocList>
+<Loc EndOffset="217" SrcFileId="8" StartOffset="147"/>
+<Loc EndOffset="261" SrcFileId="8" StartOffset="222"/>
+<Loc EndOffset="303" SrcFileId="8" StartOffset="266"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="210">
+<LocList>
+<Loc EndOffset="217" SrcFileId="8" StartOffset="147"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S2" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="211">
+<LocList>
+<Loc EndOffset="261" SrcFileId="8" StartOffset="222"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S3" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="212">
+<LocList>
+<Loc EndOffset="303" SrcFileId="8" StartOffset="266"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<HierarchyLvl HierarchyLvlId="65" HierarchyLvlTypeId="14" Intrnl_Id="213" Name="getItems">
+<Header>
+<Loc EndOffset="348" SrcFileId="8" StartOffset="309"/>
+</Header>
+<LocList>
+<Loc EndOffset="378" SrcFileId="8" StartOffset="309"/>
+</LocList>
+<StmntSeq Intrnl_Id="214">
+<LocList>
+<Loc EndOffset="372" SrcFileId="8" StartOffset="359"/>
+</LocList>
+<BasicStmnt CovItemId="S4" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="215">
+<LocList>
+<Loc EndOffset="372" SrcFileId="8" StartOffset="359"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="66" HierarchyLvlTypeId="14" Intrnl_Id="216" Name="hasItemByISBN">
+<Header>
+<Loc EndOffset="429" SrcFileId="8" StartOffset="388"/>
+</Header>
+<LocList>
+<Loc EndOffset="554" SrcFileId="8" StartOffset="388"/>
+</LocList>
+<StmntSeq Intrnl_Id="217">
+<LocList>
+<Loc EndOffset="548" SrcFileId="8" StartOffset="440"/>
+</LocList>
+<CondStmnt CovItemId="S5" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="218">
+<Branch CovItemId="B1" CovItemPrefix="amu.model.Cart.java" Implct="false" Intrnl_Id="219">
+<Cond/>
+<LocList>
+<Loc EndOffset="506" SrcFileId="8" StartOffset="469"/>
+</LocList>
+<StmntSeq Intrnl_Id="220">
+<LocList>
+<Loc EndOffset="496" SrcFileId="8" StartOffset="483"/>
+</LocList>
+<BasicStmnt CovItemId="S6" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="221">
+<LocList>
+<Loc EndOffset="496" SrcFileId="8" StartOffset="483"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B2" CovItemPrefix="amu.model.Cart.java" Implct="false" Intrnl_Id="222">
+<Cond>
+<Loc EndOffset="511" SrcFileId="8" StartOffset="507"/>
+</Cond>
+<LocList>
+<Loc EndOffset="548" SrcFileId="8" StartOffset="512"/>
+</LocList>
+<StmntSeq Intrnl_Id="223">
+<LocList>
+<Loc EndOffset="538" SrcFileId="8" StartOffset="526"/>
+</LocList>
+<BasicStmnt CovItemId="S7" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="224">
+<LocList>
+<Loc EndOffset="538" SrcFileId="8" StartOffset="526"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="442" SrcFileId="8" StartOffset="440"/>
+<LocList>
+<Loc EndOffset="548" SrcFileId="8" StartOffset="440"/>
+</LocList>
+<RootTerm CovItemId="C1" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="225">
+<BasicBoolTerm Intrnl_Id="226">
+<LocList>
+<Loc EndOffset="467" SrcFileId="8" StartOffset="444"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="67" HierarchyLvlTypeId="14" Intrnl_Id="227" Name="getItemByISBN">
+<Header>
+<Loc EndOffset="602" SrcFileId="8" StartOffset="560"/>
+</Header>
+<LocList>
+<Loc EndOffset="642" SrcFileId="8" StartOffset="560"/>
+</LocList>
+<StmntSeq Intrnl_Id="228">
+<LocList>
+<Loc EndOffset="636" SrcFileId="8" StartOffset="613"/>
+</LocList>
+<BasicStmnt CovItemId="S8" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="229">
+<LocList>
+<Loc EndOffset="636" SrcFileId="8" StartOffset="613"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="68" HierarchyLvlTypeId="14" Intrnl_Id="230" Name="updateItem">
+<Header>
+<Loc EndOffset="689" SrcFileId="8" StartOffset="652"/>
+</Header>
+<LocList>
+<Loc EndOffset="996" SrcFileId="8" StartOffset="652"/>
+</LocList>
+<StmntSeq Intrnl_Id="231">
+<LocList>
+<Loc EndOffset="741" SrcFileId="8" StartOffset="700"/>
+<Loc EndOffset="990" SrcFileId="8" StartOffset="750"/>
+</LocList>
+<BasicStmnt CovItemId="S9" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="232">
+<LocList>
+<Loc EndOffset="741" SrcFileId="8" StartOffset="700"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S10" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="233">
+<Branch CovItemId="B3" CovItemPrefix="amu.model.Cart.java" Implct="false" Intrnl_Id="234">
+<Cond/>
+<LocList>
+<Loc EndOffset="938" SrcFileId="8" StartOffset="775"/>
+</LocList>
+<StmntSeq Intrnl_Id="235">
+<LocList>
+<Loc EndOffset="928" SrcFileId="8" StartOffset="789"/>
+</LocList>
+<CondStmnt CovItemId="S11" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="236">
+<Branch CovItemId="B5" CovItemPrefix="amu.model.Cart.java" Implct="false" Intrnl_Id="237">
+<Cond/>
+<LocList>
+<Loc EndOffset="871" SrcFileId="8" StartOffset="817"/>
+</LocList>
+<StmntSeq Intrnl_Id="238">
+<LocList>
+<Loc EndOffset="857" SrcFileId="8" StartOffset="835"/>
+</LocList>
+<BasicStmnt CovItemId="S12" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="239">
+<LocList>
+<Loc EndOffset="857" SrcFileId="8" StartOffset="835"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B6" CovItemPrefix="amu.model.Cart.java" Implct="false" Intrnl_Id="240">
+<Cond>
+<Loc EndOffset="876" SrcFileId="8" StartOffset="872"/>
+</Cond>
+<LocList>
+<Loc EndOffset="928" SrcFileId="8" StartOffset="877"/>
+</LocList>
+<StmntSeq Intrnl_Id="241">
+<LocList>
+<Loc EndOffset="914" SrcFileId="8" StartOffset="895"/>
+</LocList>
+<BasicStmnt CovItemId="S13" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="242">
+<LocList>
+<Loc EndOffset="914" SrcFileId="8" StartOffset="895"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="791" SrcFileId="8" StartOffset="789"/>
+<LocList>
+<Loc EndOffset="928" SrcFileId="8" StartOffset="789"/>
+</LocList>
+<RootTerm CovItemId="C3" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="243">
+<BasicBoolTerm Intrnl_Id="244">
+<LocList>
+<Loc EndOffset="815" SrcFileId="8" StartOffset="793"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B4" CovItemPrefix="amu.model.Cart.java" Implct="false" Intrnl_Id="245">
+<Cond>
+<Loc EndOffset="943" SrcFileId="8" StartOffset="939"/>
+</Cond>
+<LocList>
+<Loc EndOffset="990" SrcFileId="8" StartOffset="944"/>
+</LocList>
+<StmntSeq Intrnl_Id="246">
+<LocList>
+<Loc EndOffset="980" SrcFileId="8" StartOffset="958"/>
+</LocList>
+<BasicStmnt CovItemId="S14" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="247">
+<LocList>
+<Loc EndOffset="980" SrcFileId="8" StartOffset="958"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="752" SrcFileId="8" StartOffset="750"/>
+<LocList>
+<Loc EndOffset="990" SrcFileId="8" StartOffset="750"/>
+</LocList>
+<RootTerm CovItemId="C2" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="248">
+<BasicBoolTerm Intrnl_Id="249">
+<LocList>
+<Loc EndOffset="773" SrcFileId="8" StartOffset="754"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="69" HierarchyLvlTypeId="14" Intrnl_Id="250" Name="addItem">
+<Header>
+<Loc EndOffset="1036" SrcFileId="8" StartOffset="1002"/>
+</Header>
+<LocList>
+<Loc EndOffset="1401" SrcFileId="8" StartOffset="1002"/>
+</LocList>
+<StmntSeq Intrnl_Id="251">
+<LocList>
+<Loc EndOffset="1088" SrcFileId="8" StartOffset="1047"/>
+<Loc EndOffset="1395" SrcFileId="8" StartOffset="1097"/>
+</LocList>
+<BasicStmnt CovItemId="S15" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="252">
+<LocList>
+<Loc EndOffset="1088" SrcFileId="8" StartOffset="1047"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S16" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="253">
+<Branch CovItemId="B7" CovItemPrefix="amu.model.Cart.java" Implct="false" Intrnl_Id="254">
+<Cond/>
+<LocList>
+<Loc EndOffset="1343" SrcFileId="8" StartOffset="1122"/>
+</LocList>
+<StmntSeq Intrnl_Id="255">
+<LocList>
+<Loc EndOffset="1333" SrcFileId="8" StartOffset="1136"/>
+</LocList>
+<CondStmnt CovItemId="S17" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="256">
+<Branch CovItemId="B9" CovItemPrefix="amu.model.Cart.java" Implct="false" Intrnl_Id="257">
+<Cond/>
+<LocList>
+<Loc EndOffset="1276" SrcFileId="8" StartOffset="1196"/>
+</LocList>
+<StmntSeq Intrnl_Id="258">
+<LocList>
+<Loc EndOffset="1262" SrcFileId="8" StartOffset="1214"/>
+</LocList>
+<BasicStmnt CovItemId="S18" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="259">
+<LocList>
+<Loc EndOffset="1262" SrcFileId="8" StartOffset="1214"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B10" CovItemPrefix="amu.model.Cart.java" Implct="false" Intrnl_Id="260">
+<Cond>
+<Loc EndOffset="1281" SrcFileId="8" StartOffset="1277"/>
+</Cond>
+<LocList>
+<Loc EndOffset="1333" SrcFileId="8" StartOffset="1282"/>
+</LocList>
+<StmntSeq Intrnl_Id="261">
+<LocList>
+<Loc EndOffset="1319" SrcFileId="8" StartOffset="1300"/>
+</LocList>
+<BasicStmnt CovItemId="S19" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="262">
+<LocList>
+<Loc EndOffset="1319" SrcFileId="8" StartOffset="1300"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1138" SrcFileId="8" StartOffset="1136"/>
+<LocList>
+<Loc EndOffset="1333" SrcFileId="8" StartOffset="1136"/>
+</LocList>
+<RootTerm CovItemId="C5" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="263">
+<BasicBoolTerm Intrnl_Id="264">
+<LocList>
+<Loc EndOffset="1194" SrcFileId="8" StartOffset="1140"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B8" CovItemPrefix="amu.model.Cart.java" Implct="false" Intrnl_Id="265">
+<Cond>
+<Loc EndOffset="1348" SrcFileId="8" StartOffset="1344"/>
+</Cond>
+<LocList>
+<Loc EndOffset="1395" SrcFileId="8" StartOffset="1349"/>
+</LocList>
+<StmntSeq Intrnl_Id="266">
+<LocList>
+<Loc EndOffset="1385" SrcFileId="8" StartOffset="1363"/>
+</LocList>
+<BasicStmnt CovItemId="S20" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="267">
+<LocList>
+<Loc EndOffset="1385" SrcFileId="8" StartOffset="1363"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1099" SrcFileId="8" StartOffset="1097"/>
+<LocList>
+<Loc EndOffset="1395" SrcFileId="8" StartOffset="1097"/>
+</LocList>
+<RootTerm CovItemId="C4" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="268">
+<BasicBoolTerm Intrnl_Id="269">
+<LocList>
+<Loc EndOffset="1120" SrcFileId="8" StartOffset="1101"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="70" HierarchyLvlTypeId="14" Intrnl_Id="270" Name="getNumberOfItems">
+<Header>
+<Loc EndOffset="1436" SrcFileId="8" StartOffset="1407"/>
+</Header>
+<LocList>
+<Loc EndOffset="1611" SrcFileId="8" StartOffset="1407"/>
+</LocList>
+<StmntSeq Intrnl_Id="271">
+<LocList>
+<Loc EndOffset="1469" SrcFileId="8" StartOffset="1447"/>
+<Loc EndOffset="1575" SrcFileId="8" StartOffset="1478"/>
+<Loc EndOffset="1605" SrcFileId="8" StartOffset="1584"/>
+</LocList>
+<BasicStmnt CovItemId="S21" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="272">
+<LocList>
+<Loc EndOffset="1469" SrcFileId="8" StartOffset="1447"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S22" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="273" MltplExecId="L1-2" MltplExecPrefix="amu.model.Cart.java" NvrExecId="L1-0" NvrExecPrefix="amu.model.Cart.java" OnceExecutedId="L1-1" OnceExecutedPrefix="amu.model.Cart.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="274">
+<LocList>
+<Loc EndOffset="1565" SrcFileId="8" StartOffset="1529"/>
+</LocList>
+<BasicStmnt CovItemId="S23" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="275">
+<LocList>
+<Loc EndOffset="1565" SrcFileId="8" StartOffset="1529"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="1481" SrcFileId="8" StartOffset="1478"/>
+<LocList>
+<Loc EndOffset="1575" SrcFileId="8" StartOffset="1478"/>
+</LocList>
+</LoopStmnt>
+<BasicStmnt CovItemId="S24" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="276">
+<LocList>
+<Loc EndOffset="1605" SrcFileId="8" StartOffset="1584"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="71" HierarchyLvlTypeId="14" Intrnl_Id="277" Name="getSubtotal">
+<Header>
+<Loc EndOffset="1643" SrcFileId="8" StartOffset="1617"/>
+</Header>
+<LocList>
+<Loc EndOffset="1844" SrcFileId="8" StartOffset="1617"/>
+</LocList>
+<StmntSeq Intrnl_Id="278">
+<LocList>
+<Loc EndOffset="1684" SrcFileId="8" StartOffset="1654"/>
+<Loc EndOffset="1813" SrcFileId="8" StartOffset="1693"/>
+<Loc EndOffset="1838" SrcFileId="8" StartOffset="1822"/>
+</LocList>
+<BasicStmnt CovItemId="S25" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="279">
+<LocList>
+<Loc EndOffset="1684" SrcFileId="8" StartOffset="1654"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S26" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="280" MltplExecId="L2-2" MltplExecPrefix="amu.model.Cart.java" NvrExecId="L2-0" NvrExecPrefix="amu.model.Cart.java" OnceExecutedId="L2-1" OnceExecutedPrefix="amu.model.Cart.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="281">
+<LocList>
+<Loc EndOffset="1803" SrcFileId="8" StartOffset="1744"/>
+</LocList>
+<BasicStmnt CovItemId="S27" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="282">
+<LocList>
+<Loc EndOffset="1803" SrcFileId="8" StartOffset="1744"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="1696" SrcFileId="8" StartOffset="1693"/>
+<LocList>
+<Loc EndOffset="1813" SrcFileId="8" StartOffset="1693"/>
+</LocList>
+</LoopStmnt>
+<BasicStmnt CovItemId="S28" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="283">
+<LocList>
+<Loc EndOffset="1838" SrcFileId="8" StartOffset="1822"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="72" HierarchyLvlTypeId="14" Intrnl_Id="284" Name="getShippingAddress">
+<Header>
+<Loc EndOffset="1885" SrcFileId="8" StartOffset="1850"/>
+</Header>
+<LocList>
+<Loc EndOffset="1925" SrcFileId="8" StartOffset="1850"/>
+</LocList>
+<StmntSeq Intrnl_Id="285">
+<LocList>
+<Loc EndOffset="1919" SrcFileId="8" StartOffset="1896"/>
+</LocList>
+<BasicStmnt CovItemId="S29" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="286">
+<LocList>
+<Loc EndOffset="1919" SrcFileId="8" StartOffset="1896"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="73" HierarchyLvlTypeId="14" Intrnl_Id="287" Name="setShippingAddress">
+<Header>
+<Loc EndOffset="1986" SrcFileId="8" StartOffset="1931"/>
+</Header>
+<LocList>
+<Loc EndOffset="2042" SrcFileId="8" StartOffset="1931"/>
+</LocList>
+<StmntSeq Intrnl_Id="288">
+<LocList>
+<Loc EndOffset="2036" SrcFileId="8" StartOffset="1997"/>
+</LocList>
+<BasicStmnt CovItemId="S30" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="289">
+<LocList>
+<Loc EndOffset="2036" SrcFileId="8" StartOffset="1997"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="74" HierarchyLvlTypeId="14" Intrnl_Id="290" Name="getCreditCard">
+<Header>
+<Loc EndOffset="2081" SrcFileId="8" StartOffset="2048"/>
+</Header>
+<LocList>
+<Loc EndOffset="2116" SrcFileId="8" StartOffset="2048"/>
+</LocList>
+<StmntSeq Intrnl_Id="291">
+<LocList>
+<Loc EndOffset="2110" SrcFileId="8" StartOffset="2092"/>
+</LocList>
+<BasicStmnt CovItemId="S31" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="292">
+<LocList>
+<Loc EndOffset="2110" SrcFileId="8" StartOffset="2092"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="75" HierarchyLvlTypeId="14" Intrnl_Id="293" Name="setCreditCard">
+<Header>
+<Loc EndOffset="2170" SrcFileId="8" StartOffset="2122"/>
+</Header>
+<LocList>
+<Loc EndOffset="2216" SrcFileId="8" StartOffset="2122"/>
+</LocList>
+<StmntSeq Intrnl_Id="294">
+<LocList>
+<Loc EndOffset="2210" SrcFileId="8" StartOffset="2181"/>
+</LocList>
+<BasicStmnt CovItemId="S32" CovItemPrefix="amu.model.Cart.java" Intrnl_Id="295">
+<LocList>
+<Loc EndOffset="2210" SrcFileId="8" StartOffset="2181"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="99" HierarchyLvlTypeId="13" Intrnl_Id="296" Name="Book">
+<Header>
+<Loc EndOffset="114" SrcFileId="9" StartOffset="73"/>
+</Header>
+<LocList>
+<Loc EndOffset="2032" SrcFileId="9" StartOffset="73"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="77" HierarchyLvlTypeId="14" Intrnl_Id="297" Name="getId">
+<Header>
+<Loc EndOffset="448" SrcFileId="9" StartOffset="430"/>
+</Header>
+<LocList>
+<Loc EndOffset="475" SrcFileId="9" StartOffset="430"/>
+</LocList>
+<StmntSeq Intrnl_Id="298">
+<LocList>
+<Loc EndOffset="469" SrcFileId="9" StartOffset="459"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="amu.model.Book.java" Intrnl_Id="299">
+<LocList>
+<Loc EndOffset="469" SrcFileId="9" StartOffset="459"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="78" HierarchyLvlTypeId="14" Intrnl_Id="300" Name="setId">
+<Header>
+<Loc EndOffset="506" SrcFileId="9" StartOffset="481"/>
+</Header>
+<LocList>
+<Loc EndOffset="536" SrcFileId="9" StartOffset="481"/>
+</LocList>
+<StmntSeq Intrnl_Id="301">
+<LocList>
+<Loc EndOffset="530" SrcFileId="9" StartOffset="517"/>
+</LocList>
+<BasicStmnt CovItemId="S2" CovItemPrefix="amu.model.Book.java" Intrnl_Id="302">
+<LocList>
+<Loc EndOffset="530" SrcFileId="9" StartOffset="517"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="79" HierarchyLvlTypeId="14" Intrnl_Id="303" Name="getTitle">
+<Header>
+<Loc EndOffset="565" SrcFileId="9" StartOffset="542"/>
+</Header>
+<LocList>
+<Loc EndOffset="595" SrcFileId="9" StartOffset="542"/>
+</LocList>
+<StmntSeq Intrnl_Id="304">
+<LocList>
+<Loc EndOffset="589" SrcFileId="9" StartOffset="576"/>
+</LocList>
+<BasicStmnt CovItemId="S3" CovItemPrefix="amu.model.Book.java" Intrnl_Id="305">
+<LocList>
+<Loc EndOffset="589" SrcFileId="9" StartOffset="576"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="80" HierarchyLvlTypeId="14" Intrnl_Id="306" Name="setTitle">
+<Header>
+<Loc EndOffset="634" SrcFileId="9" StartOffset="601"/>
+</Header>
+<LocList>
+<Loc EndOffset="670" SrcFileId="9" StartOffset="601"/>
+</LocList>
+<StmntSeq Intrnl_Id="307">
+<LocList>
+<Loc EndOffset="664" SrcFileId="9" StartOffset="645"/>
+</LocList>
+<BasicStmnt CovItemId="S4" CovItemPrefix="amu.model.Book.java" Intrnl_Id="308">
+<LocList>
+<Loc EndOffset="664" SrcFileId="9" StartOffset="645"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="81" HierarchyLvlTypeId="14" Intrnl_Id="309" Name="getPublisher">
+<Header>
+<Loc EndOffset="707" SrcFileId="9" StartOffset="676"/>
+</Header>
+<LocList>
+<Loc EndOffset="741" SrcFileId="9" StartOffset="676"/>
+</LocList>
+<StmntSeq Intrnl_Id="310">
+<LocList>
+<Loc EndOffset="735" SrcFileId="9" StartOffset="718"/>
+</LocList>
+<BasicStmnt CovItemId="S5" CovItemPrefix="amu.model.Book.java" Intrnl_Id="311">
+<LocList>
+<Loc EndOffset="735" SrcFileId="9" StartOffset="718"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="82" HierarchyLvlTypeId="14" Intrnl_Id="312" Name="setPublisher">
+<Header>
+<Loc EndOffset="792" SrcFileId="9" StartOffset="747"/>
+</Header>
+<LocList>
+<Loc EndOffset="836" SrcFileId="9" StartOffset="747"/>
+</LocList>
+<StmntSeq Intrnl_Id="313">
+<LocList>
+<Loc EndOffset="830" SrcFileId="9" StartOffset="803"/>
+</LocList>
+<BasicStmnt CovItemId="S6" CovItemPrefix="amu.model.Book.java" Intrnl_Id="314">
+<LocList>
+<Loc EndOffset="830" SrcFileId="9" StartOffset="803"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="83" HierarchyLvlTypeId="14" Intrnl_Id="315" Name="getPublished">
+<Header>
+<Loc EndOffset="870" SrcFileId="9" StartOffset="842"/>
+</Header>
+<LocList>
+<Loc EndOffset="904" SrcFileId="9" StartOffset="842"/>
+</LocList>
+<StmntSeq Intrnl_Id="316">
+<LocList>
+<Loc EndOffset="898" SrcFileId="9" StartOffset="881"/>
+</LocList>
+<BasicStmnt CovItemId="S7" CovItemPrefix="amu.model.Book.java" Intrnl_Id="317">
+<LocList>
+<Loc EndOffset="898" SrcFileId="9" StartOffset="881"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="84" HierarchyLvlTypeId="14" Intrnl_Id="318" Name="setPublished">
+<Header>
+<Loc EndOffset="952" SrcFileId="9" StartOffset="910"/>
+</Header>
+<LocList>
+<Loc EndOffset="996" SrcFileId="9" StartOffset="910"/>
+</LocList>
+<StmntSeq Intrnl_Id="319">
+<LocList>
+<Loc EndOffset="990" SrcFileId="9" StartOffset="963"/>
+</LocList>
+<BasicStmnt CovItemId="S8" CovItemPrefix="amu.model.Book.java" Intrnl_Id="320">
+<LocList>
+<Loc EndOffset="990" SrcFileId="9" StartOffset="963"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="85" HierarchyLvlTypeId="14" Intrnl_Id="321" Name="getBinding">
+<Header>
+<Loc EndOffset="1028" SrcFileId="9" StartOffset="1002"/>
+</Header>
+<LocList>
+<Loc EndOffset="1060" SrcFileId="9" StartOffset="1002"/>
+</LocList>
+<StmntSeq Intrnl_Id="322">
+<LocList>
+<Loc EndOffset="1054" SrcFileId="9" StartOffset="1039"/>
+</LocList>
+<BasicStmnt CovItemId="S9" CovItemPrefix="amu.model.Book.java" Intrnl_Id="323">
+<LocList>
+<Loc EndOffset="1054" SrcFileId="9" StartOffset="1039"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="86" HierarchyLvlTypeId="14" Intrnl_Id="324" Name="setBinding">
+<Header>
+<Loc EndOffset="1104" SrcFileId="9" StartOffset="1066"/>
+</Header>
+<LocList>
+<Loc EndOffset="1144" SrcFileId="9" StartOffset="1066"/>
+</LocList>
+<StmntSeq Intrnl_Id="325">
+<LocList>
+<Loc EndOffset="1138" SrcFileId="9" StartOffset="1115"/>
+</LocList>
+<BasicStmnt CovItemId="S10" CovItemPrefix="amu.model.Book.java" Intrnl_Id="326">
+<LocList>
+<Loc EndOffset="1138" SrcFileId="9" StartOffset="1115"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="87" HierarchyLvlTypeId="14" Intrnl_Id="327" Name="getIsbn10">
+<Header>
+<Loc EndOffset="1175" SrcFileId="9" StartOffset="1150"/>
+</Header>
+<LocList>
+<Loc EndOffset="1206" SrcFileId="9" StartOffset="1150"/>
+</LocList>
+<StmntSeq Intrnl_Id="328">
+<LocList>
+<Loc EndOffset="1200" SrcFileId="9" StartOffset="1186"/>
+</LocList>
+<BasicStmnt CovItemId="S11" CovItemPrefix="amu.model.Book.java" Intrnl_Id="329">
+<LocList>
+<Loc EndOffset="1200" SrcFileId="9" StartOffset="1186"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="88" HierarchyLvlTypeId="14" Intrnl_Id="330" Name="setIsbn10">
+<Header>
+<Loc EndOffset="1248" SrcFileId="9" StartOffset="1212"/>
+</Header>
+<LocList>
+<Loc EndOffset="1286" SrcFileId="9" StartOffset="1212"/>
+</LocList>
+<StmntSeq Intrnl_Id="331">
+<LocList>
+<Loc EndOffset="1280" SrcFileId="9" StartOffset="1259"/>
+</LocList>
+<BasicStmnt CovItemId="S12" CovItemPrefix="amu.model.Book.java" Intrnl_Id="332">
+<LocList>
+<Loc EndOffset="1280" SrcFileId="9" StartOffset="1259"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="89" HierarchyLvlTypeId="14" Intrnl_Id="333" Name="getIsbn13">
+<Header>
+<Loc EndOffset="1317" SrcFileId="9" StartOffset="1292"/>
+</Header>
+<LocList>
+<Loc EndOffset="1348" SrcFileId="9" StartOffset="1292"/>
+</LocList>
+<StmntSeq Intrnl_Id="334">
+<LocList>
+<Loc EndOffset="1342" SrcFileId="9" StartOffset="1328"/>
+</LocList>
+<BasicStmnt CovItemId="S13" CovItemPrefix="amu.model.Book.java" Intrnl_Id="335">
+<LocList>
+<Loc EndOffset="1342" SrcFileId="9" StartOffset="1328"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="90" HierarchyLvlTypeId="14" Intrnl_Id="336" Name="setIsbn13">
+<Header>
+<Loc EndOffset="1390" SrcFileId="9" StartOffset="1354"/>
+</Header>
+<LocList>
+<Loc EndOffset="1428" SrcFileId="9" StartOffset="1354"/>
+</LocList>
+<StmntSeq Intrnl_Id="337">
+<LocList>
+<Loc EndOffset="1422" SrcFileId="9" StartOffset="1401"/>
+</LocList>
+<BasicStmnt CovItemId="S14" CovItemPrefix="amu.model.Book.java" Intrnl_Id="338">
+<LocList>
+<Loc EndOffset="1422" SrcFileId="9" StartOffset="1401"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="91" HierarchyLvlTypeId="14" Intrnl_Id="339" Name="getDescription">
+<Header>
+<Loc EndOffset="1464" SrcFileId="9" StartOffset="1434"/>
+</Header>
+<LocList>
+<Loc EndOffset="1500" SrcFileId="9" StartOffset="1434"/>
+</LocList>
+<StmntSeq Intrnl_Id="340">
+<LocList>
+<Loc EndOffset="1494" SrcFileId="9" StartOffset="1475"/>
+</LocList>
+<BasicStmnt CovItemId="S15" CovItemPrefix="amu.model.Book.java" Intrnl_Id="341">
+<LocList>
+<Loc EndOffset="1494" SrcFileId="9" StartOffset="1475"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="92" HierarchyLvlTypeId="14" Intrnl_Id="342" Name="setDescription">
+<Header>
+<Loc EndOffset="1552" SrcFileId="9" StartOffset="1506"/>
+</Header>
+<LocList>
+<Loc EndOffset="1600" SrcFileId="9" StartOffset="1506"/>
+</LocList>
+<StmntSeq Intrnl_Id="343">
+<LocList>
+<Loc EndOffset="1594" SrcFileId="9" StartOffset="1563"/>
+</LocList>
+<BasicStmnt CovItemId="S16" CovItemPrefix="amu.model.Book.java" Intrnl_Id="344">
+<LocList>
+<Loc EndOffset="1594" SrcFileId="9" StartOffset="1563"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="93" HierarchyLvlTypeId="14" Intrnl_Id="345" Name="getPrice">
+<Header>
+<Loc EndOffset="1629" SrcFileId="9" StartOffset="1606"/>
+</Header>
+<LocList>
+<Loc EndOffset="1659" SrcFileId="9" StartOffset="1606"/>
+</LocList>
+<StmntSeq Intrnl_Id="346">
+<LocList>
+<Loc EndOffset="1653" SrcFileId="9" StartOffset="1640"/>
+</LocList>
+<BasicStmnt CovItemId="S17" CovItemPrefix="amu.model.Book.java" Intrnl_Id="347">
+<LocList>
+<Loc EndOffset="1653" SrcFileId="9" StartOffset="1640"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="94" HierarchyLvlTypeId="14" Intrnl_Id="348" Name="setPrice">
+<Header>
+<Loc EndOffset="1698" SrcFileId="9" StartOffset="1665"/>
+</Header>
+<LocList>
+<Loc EndOffset="1734" SrcFileId="9" StartOffset="1665"/>
+</LocList>
+<StmntSeq Intrnl_Id="349">
+<LocList>
+<Loc EndOffset="1728" SrcFileId="9" StartOffset="1709"/>
+</LocList>
+<BasicStmnt CovItemId="S18" CovItemPrefix="amu.model.Book.java" Intrnl_Id="350">
+<LocList>
+<Loc EndOffset="1728" SrcFileId="9" StartOffset="1709"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="95" HierarchyLvlTypeId="14" Intrnl_Id="351" Name="getAuthor">
+<Header>
+<Loc EndOffset="1771" SrcFileId="9" StartOffset="1740"/>
+</Header>
+<LocList>
+<Loc EndOffset="1802" SrcFileId="9" StartOffset="1740"/>
+</LocList>
+<StmntSeq Intrnl_Id="352">
+<LocList>
+<Loc EndOffset="1796" SrcFileId="9" StartOffset="1782"/>
+</LocList>
+<BasicStmnt CovItemId="S19" CovItemPrefix="amu.model.Book.java" Intrnl_Id="353">
+<LocList>
+<Loc EndOffset="1796" SrcFileId="9" StartOffset="1782"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="96" HierarchyLvlTypeId="14" Intrnl_Id="354" Name="setAuthor">
+<Header>
+<Loc EndOffset="1850" SrcFileId="9" StartOffset="1808"/>
+</Header>
+<LocList>
+<Loc EndOffset="1888" SrcFileId="9" StartOffset="1808"/>
+</LocList>
+<StmntSeq Intrnl_Id="355">
+<LocList>
+<Loc EndOffset="1882" SrcFileId="9" StartOffset="1861"/>
+</LocList>
+<BasicStmnt CovItemId="S20" CovItemPrefix="amu.model.Book.java" Intrnl_Id="356">
+<LocList>
+<Loc EndOffset="1882" SrcFileId="9" StartOffset="1861"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="97" HierarchyLvlTypeId="14" Intrnl_Id="357" Name="getEdition">
+<Header>
+<Loc EndOffset="1917" SrcFileId="9" StartOffset="1894"/>
+</Header>
+<LocList>
+<Loc EndOffset="1949" SrcFileId="9" StartOffset="1894"/>
+</LocList>
+<StmntSeq Intrnl_Id="358">
+<LocList>
+<Loc EndOffset="1943" SrcFileId="9" StartOffset="1928"/>
+</LocList>
+<BasicStmnt CovItemId="S21" CovItemPrefix="amu.model.Book.java" Intrnl_Id="359">
+<LocList>
+<Loc EndOffset="1943" SrcFileId="9" StartOffset="1928"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="98" HierarchyLvlTypeId="14" Intrnl_Id="360" Name="setEdition">
+<Header>
+<Loc EndOffset="1990" SrcFileId="9" StartOffset="1955"/>
+</Header>
+<LocList>
+<Loc EndOffset="2030" SrcFileId="9" StartOffset="1955"/>
+</LocList>
+<StmntSeq Intrnl_Id="361">
+<LocList>
+<Loc EndOffset="2024" SrcFileId="9" StartOffset="2001"/>
+</LocList>
+<BasicStmnt CovItemId="S22" CovItemPrefix="amu.model.Book.java" Intrnl_Id="362">
+<LocList>
+<Loc EndOffset="2024" SrcFileId="9" StartOffset="2001"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="106" HierarchyLvlTypeId="13" Intrnl_Id="363" Name="Author">
+<Header>
+<Loc EndOffset="93" SrcFileId="10" StartOffset="50"/>
+</Header>
+<LocList>
+<Loc EndOffset="558" SrcFileId="10" StartOffset="50"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="100" HierarchyLvlTypeId="14" Intrnl_Id="364" Name="Author">
+<Header>
+<Loc EndOffset="162" SrcFileId="10" StartOffset="147"/>
+</Header>
+<LocList>
+<Loc EndOffset="214" SrcFileId="10" StartOffset="147"/>
+</LocList>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="101" HierarchyLvlTypeId="14" Intrnl_Id="365" Name="Author">
+<Header>
+<Loc EndOffset="258" SrcFileId="10" StartOffset="224"/>
+</Header>
+<LocList>
+<Loc EndOffset="314" SrcFileId="10" StartOffset="224"/>
+</LocList>
+<StmntSeq Intrnl_Id="366">
+<LocList>
+<Loc EndOffset="282" SrcFileId="10" StartOffset="269"/>
+<Loc EndOffset="308" SrcFileId="10" StartOffset="291"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="amu.model.Author.java" Intrnl_Id="367">
+<LocList>
+<Loc EndOffset="282" SrcFileId="10" StartOffset="269"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S2" CovItemPrefix="amu.model.Author.java" Intrnl_Id="368">
+<LocList>
+<Loc EndOffset="308" SrcFileId="10" StartOffset="291"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="102" HierarchyLvlTypeId="14" Intrnl_Id="369" Name="getId">
+<Header>
+<Loc EndOffset="338" SrcFileId="10" StartOffset="320"/>
+</Header>
+<LocList>
+<Loc EndOffset="365" SrcFileId="10" StartOffset="320"/>
+</LocList>
+<StmntSeq Intrnl_Id="370">
+<LocList>
+<Loc EndOffset="359" SrcFileId="10" StartOffset="349"/>
+</LocList>
+<BasicStmnt CovItemId="S3" CovItemPrefix="amu.model.Author.java" Intrnl_Id="371">
+<LocList>
+<Loc EndOffset="359" SrcFileId="10" StartOffset="349"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="103" HierarchyLvlTypeId="14" Intrnl_Id="372" Name="setId">
+<Header>
+<Loc EndOffset="396" SrcFileId="10" StartOffset="371"/>
+</Header>
+<LocList>
+<Loc EndOffset="426" SrcFileId="10" StartOffset="371"/>
+</LocList>
+<StmntSeq Intrnl_Id="373">
+<LocList>
+<Loc EndOffset="420" SrcFileId="10" StartOffset="407"/>
+</LocList>
+<BasicStmnt CovItemId="S4" CovItemPrefix="amu.model.Author.java" Intrnl_Id="374">
+<LocList>
+<Loc EndOffset="420" SrcFileId="10" StartOffset="407"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="104" HierarchyLvlTypeId="14" Intrnl_Id="375" Name="getName">
+<Header>
+<Loc EndOffset="455" SrcFileId="10" StartOffset="432"/>
+</Header>
+<LocList>
+<Loc EndOffset="484" SrcFileId="10" StartOffset="432"/>
+</LocList>
+<StmntSeq Intrnl_Id="376">
+<LocList>
+<Loc EndOffset="478" SrcFileId="10" StartOffset="466"/>
+</LocList>
+<BasicStmnt CovItemId="S5" CovItemPrefix="amu.model.Author.java" Intrnl_Id="377">
+<LocList>
+<Loc EndOffset="478" SrcFileId="10" StartOffset="466"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="105" HierarchyLvlTypeId="14" Intrnl_Id="378" Name="setName">
+<Header>
+<Loc EndOffset="522" SrcFileId="10" StartOffset="490"/>
+</Header>
+<LocList>
+<Loc EndOffset="556" SrcFileId="10" StartOffset="490"/>
+</LocList>
+<StmntSeq Intrnl_Id="379">
+<LocList>
+<Loc EndOffset="550" SrcFileId="10" StartOffset="533"/>
+</LocList>
+<BasicStmnt CovItemId="S6" CovItemPrefix="amu.model.Author.java" Intrnl_Id="380">
+<LocList>
+<Loc EndOffset="550" SrcFileId="10" StartOffset="533"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="113" HierarchyLvlTypeId="13" Intrnl_Id="381" Name="Address">
+<Header>
+<Loc EndOffset="40" SrcFileId="11" StartOffset="20"/>
+</Header>
+<LocList>
+<Loc EndOffset="715" SrcFileId="11" StartOffset="20"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="107" HierarchyLvlTypeId="14" Intrnl_Id="382" Name="Address">
+<Header>
+<Loc EndOffset="197" SrcFileId="11" StartOffset="140"/>
+</Header>
+<LocList>
+<Loc EndOffset="293" SrcFileId="11" StartOffset="140"/>
+</LocList>
+<StmntSeq Intrnl_Id="383">
+<LocList>
+<Loc EndOffset="221" SrcFileId="11" StartOffset="208"/>
+<Loc EndOffset="255" SrcFileId="11" StartOffset="230"/>
+<Loc EndOffset="287" SrcFileId="11" StartOffset="264"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="amu.model.Address.java" Intrnl_Id="384">
+<LocList>
+<Loc EndOffset="221" SrcFileId="11" StartOffset="208"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S2" CovItemPrefix="amu.model.Address.java" Intrnl_Id="385">
+<LocList>
+<Loc EndOffset="255" SrcFileId="11" StartOffset="230"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S3" CovItemPrefix="amu.model.Address.java" Intrnl_Id="386">
+<LocList>
+<Loc EndOffset="287" SrcFileId="11" StartOffset="264"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="108" HierarchyLvlTypeId="14" Intrnl_Id="387" Name="Address">
+<Header>
+<Loc EndOffset="348" SrcFileId="11" StartOffset="299"/>
+</Header>
+<LocList>
+<Loc EndOffset="446" SrcFileId="11" StartOffset="299"/>
+</LocList>
+<StmntSeq Intrnl_Id="388">
+<LocList>
+<Loc EndOffset="374" SrcFileId="11" StartOffset="359"/>
+<Loc EndOffset="408" SrcFileId="11" StartOffset="383"/>
+<Loc EndOffset="440" SrcFileId="11" StartOffset="417"/>
+</LocList>
+<BasicStmnt CovItemId="S4" CovItemPrefix="amu.model.Address.java" Intrnl_Id="389">
+<LocList>
+<Loc EndOffset="374" SrcFileId="11" StartOffset="359"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S5" CovItemPrefix="amu.model.Address.java" Intrnl_Id="390">
+<LocList>
+<Loc EndOffset="408" SrcFileId="11" StartOffset="383"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S6" CovItemPrefix="amu.model.Address.java" Intrnl_Id="391">
+<LocList>
+<Loc EndOffset="440" SrcFileId="11" StartOffset="417"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="109" HierarchyLvlTypeId="14" Intrnl_Id="392" Name="getId">
+<Header>
+<Loc EndOffset="470" SrcFileId="11" StartOffset="452"/>
+</Header>
+<LocList>
+<Loc EndOffset="497" SrcFileId="11" StartOffset="452"/>
+</LocList>
+<StmntSeq Intrnl_Id="393">
+<LocList>
+<Loc EndOffset="491" SrcFileId="11" StartOffset="481"/>
+</LocList>
+<BasicStmnt CovItemId="S7" CovItemPrefix="amu.model.Address.java" Intrnl_Id="394">
+<LocList>
+<Loc EndOffset="491" SrcFileId="11" StartOffset="481"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="110" HierarchyLvlTypeId="14" Intrnl_Id="395" Name="getCustomer">
+<Header>
+<Loc EndOffset="532" SrcFileId="11" StartOffset="503"/>
+</Header>
+<LocList>
+<Loc EndOffset="565" SrcFileId="11" StartOffset="503"/>
+</LocList>
+<StmntSeq Intrnl_Id="396">
+<LocList>
+<Loc EndOffset="559" SrcFileId="11" StartOffset="543"/>
+</LocList>
+<BasicStmnt CovItemId="S8" CovItemPrefix="amu.model.Address.java" Intrnl_Id="397">
+<LocList>
+<Loc EndOffset="559" SrcFileId="11" StartOffset="543"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="111" HierarchyLvlTypeId="14" Intrnl_Id="398" Name="getAddress">
+<Header>
+<Loc EndOffset="597" SrcFileId="11" StartOffset="571"/>
+</Header>
+<LocList>
+<Loc EndOffset="629" SrcFileId="11" StartOffset="571"/>
+</LocList>
+<StmntSeq Intrnl_Id="399">
+<LocList>
+<Loc EndOffset="623" SrcFileId="11" StartOffset="608"/>
+</LocList>
+<BasicStmnt CovItemId="S9" CovItemPrefix="amu.model.Address.java" Intrnl_Id="400">
+<LocList>
+<Loc EndOffset="623" SrcFileId="11" StartOffset="608"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="112" HierarchyLvlTypeId="14" Intrnl_Id="401" Name="setAddress">
+<Header>
+<Loc EndOffset="673" SrcFileId="11" StartOffset="635"/>
+</Header>
+<LocList>
+<Loc EndOffset="713" SrcFileId="11" StartOffset="635"/>
+</LocList>
+<StmntSeq Intrnl_Id="402">
+<LocList>
+<Loc EndOffset="707" SrcFileId="11" StartOffset="684"/>
+</LocList>
+<BasicStmnt CovItemId="S10" CovItemPrefix="amu.model.Address.java" Intrnl_Id="403">
+<LocList>
+<Loc EndOffset="707" SrcFileId="11" StartOffset="684"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</MASTRoot>
+</TestSessionContainer>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?><TestSessionContainer xmlns="http://www.codecover.org/xml/testsession-container" Date="1380146147461" TestSessionContainerId="97c925bb-20e7-4880-9b7d-3e876adad5f8" version="1.0">
+<SrcFileList>
+<SrcFile Content="package amu.model;&#10;&#10;public class Address {&#10;    &#10;    private Integer id;&#10;    private Customer customer;&#10;    private String address;&#10;    &#10;    public Address(int id, Customer customer, String address) {&#10;        this.id = id;&#10;        this.customer = customer;&#10;        this.address = address;&#10;    }&#10;&#10;    public Address(Customer customer, String address) {&#10;        this.id = null;&#10;        this.customer = customer;&#10;        this.address = address;&#10;    }&#10;&#10;    public int getId() {&#10;        return id;&#10;    }&#10;&#10;    public Customer getCustomer() {&#10;        return customer;&#10;    }&#10;&#10;    public String getAddress() {&#10;        return address;&#10;    }&#10;&#10;    public void setAddress(String address) {&#10;        this.address = address;&#10;    }&#10;}&#10;" Filename="Address.java" Intrnl_Id="1"/>
+</SrcFileList>
+<CritList>
+<CritListEntry Name="org.codecover.model.utils.criteria.LoopCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.BranchCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.ConditionCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.SynchronizedStatementCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.QMOCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.StatementCoverage" PluginName="org.codecover"/>
+</CritList>
+<BoolOpList/>
+<HierarchyLvlTypeList>
+<HierarchyLvlType EnglishName="package" IntrnlName="package" Intrnl_Id="2"/>
+<HierarchyLvlType EnglishName="class" IntrnlName="class" Intrnl_Id="3"/>
+<HierarchyLvlType EnglishName="method" IntrnlName="method" Intrnl_Id="4"/>
+<HierarchyLvlType EnglishName="default package" IntrnlName="default package" Intrnl_Id="5"/>
+</HierarchyLvlTypeList>
+<MASTRoot>
+<HierarchyLvl HierarchyLvlId="11" HierarchyLvlTypeId="5" Intrnl_Id="6" Name="default package">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="10" HierarchyLvlTypeId="2" Intrnl_Id="7" Name="amu">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="9" HierarchyLvlTypeId="2" Intrnl_Id="8" Name="model">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="8" HierarchyLvlTypeId="3" Intrnl_Id="9" Name="Address">
+<Header>
+<Loc EndOffset="40" SrcFileId="1" StartOffset="20"/>
+</Header>
+<LocList>
+<Loc EndOffset="715" SrcFileId="1" StartOffset="20"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="2" HierarchyLvlTypeId="4" Intrnl_Id="10" Name="Address">
+<Header>
+<Loc EndOffset="197" SrcFileId="1" StartOffset="140"/>
+</Header>
+<LocList>
+<Loc EndOffset="293" SrcFileId="1" StartOffset="140"/>
+</LocList>
+<StmntSeq Intrnl_Id="11">
+<LocList>
+<Loc EndOffset="221" SrcFileId="1" StartOffset="208"/>
+<Loc EndOffset="255" SrcFileId="1" StartOffset="230"/>
+<Loc EndOffset="287" SrcFileId="1" StartOffset="264"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="amu.model.Address.java" Intrnl_Id="12">
+<LocList>
+<Loc EndOffset="221" SrcFileId="1" StartOffset="208"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S2" CovItemPrefix="amu.model.Address.java" Intrnl_Id="13">
+<LocList>
+<Loc EndOffset="255" SrcFileId="1" StartOffset="230"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S3" CovItemPrefix="amu.model.Address.java" Intrnl_Id="14">
+<LocList>
+<Loc EndOffset="287" SrcFileId="1" StartOffset="264"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="3" HierarchyLvlTypeId="4" Intrnl_Id="15" Name="Address">
+<Header>
+<Loc EndOffset="348" SrcFileId="1" StartOffset="299"/>
+</Header>
+<LocList>
+<Loc EndOffset="446" SrcFileId="1" StartOffset="299"/>
+</LocList>
+<StmntSeq Intrnl_Id="16">
+<LocList>
+<Loc EndOffset="374" SrcFileId="1" StartOffset="359"/>
+<Loc EndOffset="408" SrcFileId="1" StartOffset="383"/>
+<Loc EndOffset="440" SrcFileId="1" StartOffset="417"/>
+</LocList>
+<BasicStmnt CovItemId="S4" CovItemPrefix="amu.model.Address.java" Intrnl_Id="17">
+<LocList>
+<Loc EndOffset="374" SrcFileId="1" StartOffset="359"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S5" CovItemPrefix="amu.model.Address.java" Intrnl_Id="18">
+<LocList>
+<Loc EndOffset="408" SrcFileId="1" StartOffset="383"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S6" CovItemPrefix="amu.model.Address.java" Intrnl_Id="19">
+<LocList>
+<Loc EndOffset="440" SrcFileId="1" StartOffset="417"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="4" HierarchyLvlTypeId="4" Intrnl_Id="20" Name="getId">
+<Header>
+<Loc EndOffset="470" SrcFileId="1" StartOffset="452"/>
+</Header>
+<LocList>
+<Loc EndOffset="497" SrcFileId="1" StartOffset="452"/>
+</LocList>
+<StmntSeq Intrnl_Id="21">
+<LocList>
+<Loc EndOffset="491" SrcFileId="1" StartOffset="481"/>
+</LocList>
+<BasicStmnt CovItemId="S7" CovItemPrefix="amu.model.Address.java" Intrnl_Id="22">
+<LocList>
+<Loc EndOffset="491" SrcFileId="1" StartOffset="481"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="5" HierarchyLvlTypeId="4" Intrnl_Id="23" Name="getCustomer">
+<Header>
+<Loc EndOffset="532" SrcFileId="1" StartOffset="503"/>
+</Header>
+<LocList>
+<Loc EndOffset="565" SrcFileId="1" StartOffset="503"/>
+</LocList>
+<StmntSeq Intrnl_Id="24">
+<LocList>
+<Loc EndOffset="559" SrcFileId="1" StartOffset="543"/>
+</LocList>
+<BasicStmnt CovItemId="S8" CovItemPrefix="amu.model.Address.java" Intrnl_Id="25">
+<LocList>
+<Loc EndOffset="559" SrcFileId="1" StartOffset="543"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="6" HierarchyLvlTypeId="4" Intrnl_Id="26" Name="getAddress">
+<Header>
+<Loc EndOffset="597" SrcFileId="1" StartOffset="571"/>
+</Header>
+<LocList>
+<Loc EndOffset="629" SrcFileId="1" StartOffset="571"/>
+</LocList>
+<StmntSeq Intrnl_Id="27">
+<LocList>
+<Loc EndOffset="623" SrcFileId="1" StartOffset="608"/>
+</LocList>
+<BasicStmnt CovItemId="S9" CovItemPrefix="amu.model.Address.java" Intrnl_Id="28">
+<LocList>
+<Loc EndOffset="623" SrcFileId="1" StartOffset="608"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="7" HierarchyLvlTypeId="4" Intrnl_Id="29" Name="setAddress">
+<Header>
+<Loc EndOffset="673" SrcFileId="1" StartOffset="635"/>
+</Header>
+<LocList>
+<Loc EndOffset="713" SrcFileId="1" StartOffset="635"/>
+</LocList>
+<StmntSeq Intrnl_Id="30">
+<LocList>
+<Loc EndOffset="707" SrcFileId="1" StartOffset="684"/>
+</LocList>
+<BasicStmnt CovItemId="S10" CovItemPrefix="amu.model.Address.java" Intrnl_Id="31">
+<LocList>
+<Loc EndOffset="707" SrcFileId="1" StartOffset="684"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</MASTRoot>
+</TestSessionContainer>
